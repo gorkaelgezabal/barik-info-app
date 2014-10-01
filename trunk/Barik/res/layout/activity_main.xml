@@ -6,42 +6,21 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.jtv_gea.barik.MainActivity" >
-
-    <EditText
-        android:id="@+id/et_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="121dp"
-        android:ems="10"
-        android:hint="@string/edit_email"
-        android:inputType="textEmailAddress" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/et_pass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_user"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="19dp"
-        android:ems="10"
-        android:hint="@string/edit_password"
-        android:inputType="textPassword" />
+    tools:context="com.example.prueba.MainActivity" >
 
     <Button
-        android:id="@+id/bt_login"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_pass"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="19dp"
-        android:text="@string/button_login"
+        android:layout_marginTop="84dp"
         android:onClick="login"
-         />
+        android:text="Button" />
+    
+    <WebView
+        android:id="@+id/browser"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

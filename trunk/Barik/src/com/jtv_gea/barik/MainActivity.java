@@ -1,6 +1,6 @@
 package com.jtv_gea.barik;
 
-import java.util.concurrent.ExecutionException;
+import com.jtv_gea.barik.R;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
-	
-	public static final String BALANCE_MESSAGE = "com.jtv_gea.barik.USER";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,38 +40,35 @@ public class MainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void login(View view){
-		Intent intent = new Intent(this, SaldoActualActivity.class);
-		EditText editTextEmail = (EditText) findViewById(R.id.et_user);
-		EditText editTextPassword = (EditText) findViewById(R.id.et_pass);
-		
-		String email = editTextEmail.getText().toString();
-		String password = editTextPassword.getText().toString();
-		
-		//GET pagina de login
-		//resultado: recoger parametros necesarios
-		//POST con los parametros recogidos y email y pass
-		//resultado: recoger saldo
+	class MyJavaScriptInterface
+	{
+	    @JavascriptInterface
+	    @SuppressWarnings("unused")
+	    public void processHTML(String html)
+	    {
+	        System.out.println(html);
+	    }
+	}
 	
-		AsyncLogin asyncLogin= new AsyncLogin(email, password);
-		asyncLogin.execute();
-		Integer balance;
-		try {
-			balance = asyncLogin.get();
-			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
+	public void login(View view){
+		final WebView browser = (WebView)findViewById(R.id.browser);
 		
-		//crear nuevo intent con el saldo
-		intent.putExtra(BALANCE_MESSAGE, email);
-		startActivity(intent);
-		
-		
-		
+		/* JavaScript must be enabled if you want it to work, obviously */
+		browser.getSettings().setJavaScriptEnabled(true);
+
+		/* Register a new JavaScript interface called HTMLOUT */
+		browser.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
+
+		/* WebViewClient must be set BEFORE calling loadUrl! */
+		browser.setWebViewClient(new WebViewClient() {
+		    @Override
+		    public void onPageFinished(WebView view, String url)
+		    {
+		        /* This call inject JavaScript into the page which just finished loading. */
+		        browser.loadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
+		    }
+		});
+		browser.loadUrl("https://barikweb.cotrabi.com/sagb/faces/Login.jspx");
 	}
 }
