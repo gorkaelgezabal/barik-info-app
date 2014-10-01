@@ -15,6 +15,7 @@ import android.widget.EditText;
 
 public class MainActivity extends ActionBarActivity {
 
+	Integer cont = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,7 +47,22 @@ public class MainActivity extends ActionBarActivity {
 	    @SuppressWarnings("unused")
 	    public void processHTML(String html)
 	    {
-	        System.out.println(html);
+	    	
+	    	if(cont == 1){
+	    		final WebView browser = (WebView)findViewById(R.id.browser);
+	    		
+	    		browser.post(new Runnable() {
+	    		    @Override
+	    		    public void run() {
+	    		    	browser.loadUrl("javascript:getElementById('username').value = 'gorkaelgezabal@gmail.com');");
+	    	    		browser.loadUrl("javascript:getElementById('it1').value = 'contraseña';");
+	    		    	browser.loadUrl("javascript:getElementById('enter').click();");
+	    		    }
+	    		});
+	    		
+	    	}
+	    	cont++;
+	        //System.out.println(html);
 	    }
 	}
 	
