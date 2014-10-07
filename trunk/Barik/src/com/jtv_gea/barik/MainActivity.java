@@ -50,9 +50,7 @@ public class MainActivity extends ActionBarActivity {
 	    @SuppressWarnings("unused")
 	    public void processHTML(String saldo)
 	    {
-	    	
-	    	
-	        System.out.println(saldo);
+	        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!\n!\n!\n!\n!\n!\n!"+saldo);
 	    }
 	}
 	
@@ -91,9 +89,11 @@ public class MainActivity extends ActionBarActivity {
 		    	}
 		    	else if (cont ==3){//Pagina principal
 		    		//pt1:j_id_id14:1:j_id_id23
+		    		//String jqueryLoad ="if(!(window.jQuery && window.jQuery.fn.jquery == '1.3.2')) {var s = document.createElement('script');s.setAttribute('src', 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js');s.setAttribute('type', 'text/javascript');document.getElementsByTagName('head')[0].appendChild(s);}";
 		    		String javaScript = "(function(){ " +
 		    		        "document.getElementById('pt1:j_id_id14:1:j_id_id23').click(); " +
-		    		        "})()";
+		    		        "})();";
+		    		//String javaScript2 ="javascript:$(document).ajaxComplete(function (event, request, settings) {window.HTMLOUT.processHTML(document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].innerHTML);});";
 //					view.loadUrl("javascript:document.getElementById(\"username::content\").innerHTML = \"gorka\";");
 		    		view.loadUrl("javascript: "+javaScript);
 		    	}
@@ -103,6 +103,14 @@ public class MainActivity extends ActionBarActivity {
 		    		view.loadUrl("javascript:window.HTMLOUT.processHTML(document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].innerHTML);");
 		    	}
 		    	cont++;	
+		    	
+		    }
+		    @Override
+		    public void onLoadResource(WebView view, String url)
+		    {
+		    	if (url.equals("https://barikweb.cotrabi.com/sagb/afr/info.png")){
+		    		view.loadUrl("javascript:window.HTMLOUT.processHTML(document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML);");
+		    	}
 		    	
 		    }
 		    
