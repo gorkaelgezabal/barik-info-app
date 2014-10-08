@@ -19,6 +19,7 @@ public class AsyncDownload extends AsyncTask<String, String, Integer> {
 	@Override
 	protected Integer doInBackground(String... params) {
 		// TODO Auto-generated method stub
+		getSaldo();
 		return null;
 	}
 	
