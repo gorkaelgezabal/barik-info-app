@@ -9,5 +9,7 @@
     <string name="title_activity_saldo_actual">SaldoActualActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_saldo">SaldoActivity</string>
+    <string name="text_sado_barik">El saldo de su barik es: </string>
+
 
 </resources>
