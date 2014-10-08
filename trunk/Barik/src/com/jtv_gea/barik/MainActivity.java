@@ -20,6 +20,12 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Persistencia persistencia= new Persistencia(this.getApplicationContext());
+		BarikUser user =persistencia.loadUser();
+		if (!user.getUsername().equals("")){
+			Intent saldoActivity = new Intent(this, SaldoActivity.class);
+			startActivity(saldoActivity);
+		}
 	}
 
 	@Override
