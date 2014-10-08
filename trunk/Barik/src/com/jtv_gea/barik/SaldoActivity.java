@@ -10,6 +10,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
 
 public class SaldoActivity extends ActionBarActivity {
 
@@ -18,6 +19,7 @@ public class SaldoActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_saldo);
+		
 	}
 
 	@Override
@@ -48,7 +50,7 @@ public class SaldoActivity extends ActionBarActivity {
 		browser.getSettings().setDomStorageEnabled(true);
 		browser.getSettings().setSaveFormData(false);
 		/* Register a new JavaScript interface called HTMLOUT */
-		browser.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
+		browser.addJavascriptInterface(new MyJavaScriptInterface(this), "HTMLOUT");
 
 		/* WebViewClient must be set BEFORE calling loadUrl! */
 		browser.setWebViewClient(new WebViewClient() {
@@ -108,11 +110,18 @@ public class SaldoActivity extends ActionBarActivity {
 
 	class MyJavaScriptInterface
 	{
-	    @JavascriptInterface
+		private SaldoActivity saldoActivity;
+	    public MyJavaScriptInterface(SaldoActivity saldoActivity) {
+			this.saldoActivity=saldoActivity;
+		}
+
+		@JavascriptInterface
 	    @SuppressWarnings("unused")
 	    public void processHTML(String saldo)
 	    {
 	        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!\n!\n!\n!\n!\n!\n!"+saldo);
+	        EditText saldoText= (EditText) this.saldoActivity.findViewById(R.id.text_saldo);
+	        saldoText.setText(saldoText.getText().toString()+saldo);	        
 	    }
 	}
 }
