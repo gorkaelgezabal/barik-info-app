@@ -8,5 +8,6 @@
     <string name="button_login">Login</string>
     <string name="title_activity_saldo_actual">SaldoActualActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_saldo">SaldoActivity</string>
 
 </resources>
