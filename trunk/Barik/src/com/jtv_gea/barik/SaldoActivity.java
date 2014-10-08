@@ -11,6 +11,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class SaldoActivity extends ActionBarActivity {
 
@@ -19,6 +20,7 @@ public class SaldoActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_saldo);
+		this.getSaldo();
 		
 	}
 
@@ -41,7 +43,7 @@ public class SaldoActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void login(View view){
+	public void getSaldo(){
 		WebView browser = (WebView)findViewById(R.id.browser);
 		
 		/* JavaScript must be enabled if you want it to work, obviously */
@@ -120,8 +122,8 @@ public class SaldoActivity extends ActionBarActivity {
 	    public void processHTML(String saldo)
 	    {
 	        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!\n!\n!\n!\n!\n!\n!"+saldo);
-	        EditText saldoText= (EditText) this.saldoActivity.findViewById(R.id.text_saldo);
-	        saldoText.setText(saldoText.getText().toString()+saldo);	        
+	        TextView saldoText= (TextView) this.saldoActivity.findViewById(R.id.text_saldo);
+	        saldoText.setText(saldoText.getText()+saldo);	        
 	    }
 	}
 }
