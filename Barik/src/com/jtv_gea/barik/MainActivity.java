@@ -1,19 +1,16 @@
 package com.jtv_gea.barik;
 
 import com.jtv_gea.barik.R;
+import com.jtv_gea.barik.modelo.BarikUser;
+import com.jtv_gea.barik.modelo.Persistencia;
+
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.ConsoleMessage;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.EditText;
 
 public class MainActivity extends ActionBarActivity {
@@ -44,12 +41,17 @@ public class MainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	
-	
-	
-	
 	public void login(View view){
+		EditText et_user = (EditText)findViewById(R.id.et_user);
+		EditText et_pass = (EditText)findViewById(R.id.et_pass);
 		
+		Persistencia db = new Persistencia(this);
+		BarikUser barikUser = new BarikUser();
+		barikUser.setUsername(et_user.getText().toString());
+		barikUser.setPassword(et_pass.getText().toString());
+		db.saveUser(barikUser);
 		
+		Intent saldoActivity = new Intent(this, SaldoActivity.class);
+		startActivity(saldoActivity);
 	}
 }
