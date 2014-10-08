@@ -1,6 +1,9 @@
 package com.jtv_gea.barik;
 
 
+import com.jtv_gea.barik.modelo.BarikUser;
+import com.jtv_gea.barik.modelo.Persistencia;
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,7 +24,12 @@ public class SaldoActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_saldo);
+		Persistencia persistencia= new Persistencia(this.getApplicationContext());
+		BarikUser user =persistencia.loadUser();
+		TextView saldoText= (TextView) this.findViewById(R.id.text_saldo);
+        saldoText.setText(this.getString(R.string.text_saldo_barik)+user.getLastBalance());        
 		this.getSaldo();
+		
 		
 	}
 
@@ -64,11 +72,13 @@ public class SaldoActivity extends ActionBarActivity {
 		        
 		        
 //		        	browser.loadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
-
+		    	System.out.println("---------------------------Entrada numero: "+ cont);
 		    	if(cont == 1){//Login
+		    		Persistencia persistencia= new Persistencia(view.getContext());
+		    		BarikUser user =persistencia.loadUser();
 		    		String javaScript = "(function(){ " +
-		    		        "document.getElementById('username::content').value = 'gorkaelgezabal@gmail.com'; " +
-		    		        "document.getElementById('it1::content').value = '3kIwOwA7'; " +
+		    		        "document.getElementById('username::content').value = '"+user.getUsername()+"'; " +
+		    		        "document.getElementById('it1::content').value = '"+user.getPassword()+"'; " +
 		    		        "document.getElementById('enter').click(); " +
 		    		        "})()";
 //					view.loadUrl("javascript:document.getElementById(\"username::content\").innerHTML = \"gorka\";");
@@ -125,7 +135,10 @@ public class SaldoActivity extends ActionBarActivity {
 	    public void processHTML(String saldo)
 	    {
 			mHandler.post(new HiloTrampa(saldo, this.saldoActivity));
-				        
+			Persistencia persistencia= new Persistencia(saldoActivity.getApplicationContext());
+    		BarikUser user =persistencia.loadUser();
+    		user.setLastBalance(saldo);
+    		persistencia.saveUser(user);
 	    }
 	}
 	
@@ -142,7 +155,7 @@ public class SaldoActivity extends ActionBarActivity {
 		public void run() {
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!\n!\n!\n!\n!\n!\n!"+saldo);
 	        TextView saldoText= (TextView) this.saldoActivity.findViewById(R.id.text_saldo);
-	        saldoText.setText(saldoText.getText()+saldo);
+	        saldoText.setText(this.saldoActivity.getString(R.string.text_saldo_barik)+saldo);
 			
 		}
 		
