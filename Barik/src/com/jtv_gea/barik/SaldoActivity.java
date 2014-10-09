@@ -27,7 +27,7 @@ public class SaldoActivity extends ActionBarActivity {
 		Persistencia persistencia= new Persistencia(this.getApplicationContext());
 		BarikUser user =persistencia.loadUser();
 		TextView saldoText= (TextView) this.findViewById(R.id.text_saldo);
-        saldoText.setText(this.getString(R.string.text_saldo_barik)+user.getLastBalance());        
+        saldoText.setText(this.getString(R.string.text_saldo_barik)+" "+user.getLastBalance());        
 		this.getSaldo();
 		
 		
@@ -73,7 +73,10 @@ public class SaldoActivity extends ActionBarActivity {
 		        
 //		        	browser.loadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
 		    	System.out.println("---------------------------Entrada numero: "+ cont);
-		    	if(cont == 1){//Login
+		    	if(cont == 0){
+		    		Handler mHandler = new Handler();
+		    		mHandler.post(new ProgressBarController((SaldoActivity) view.getContext(), 15));
+		    	}else if(cont == 1){//Login
 		    		Persistencia persistencia= new Persistencia(view.getContext());
 		    		BarikUser user =persistencia.loadUser();
 		    		String javaScript = "(function(){ " +
@@ -86,8 +89,10 @@ public class SaldoActivity extends ActionBarActivity {
 		    		Handler mHandler = new Handler();
 		    		mHandler.post(new ProgressBarController((SaldoActivity) view.getContext(), 33));
 
-		    	}
-		    	else if (cont ==3){//Pagina principal
+		    	}else if(cont == 2){
+		    		Handler mHandler = new Handler();
+		    		mHandler.post(new ProgressBarController((SaldoActivity) view.getContext(), 60));
+		    	}else if (cont ==3){//Pagina principal
 		    		//pt1:j_id_id14:1:j_id_id23
 		    		//String jqueryLoad ="if(!(window.jQuery && window.jQuery.fn.jquery == '1.3.2')) {var s = document.createElement('script');s.setAttribute('src', 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js');s.setAttribute('type', 'text/javascript');document.getElementsByTagName('head')[0].appendChild(s);}";
 		    		String javaScript = "(function(){ " +
@@ -105,7 +110,7 @@ public class SaldoActivity extends ActionBarActivity {
 		    		//Aqui no entra porque creo que al hacer click en titulos validos hace una llamada ajax, y por eso no salta OnPageFinished
 		    		view.loadUrl("javascript:window.HTMLOUT.processHTML(document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].innerHTML);");
 		    		Handler mHandler = new Handler();
-		    		mHandler.post(new ProgressBarController((SaldoActivity) view.getContext(), 80));
+		    		mHandler.post(new ProgressBarController((SaldoActivity) view.getContext(), 90));
 		    	}
 		    	cont++;	
 		    	
@@ -160,7 +165,7 @@ public class SaldoActivity extends ActionBarActivity {
 		public void run() {
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!\n!\n!\n!\n!\n!\n!"+saldo);
 	        TextView saldoText= (TextView) this.saldoActivity.findViewById(R.id.text_saldo);
-	        saldoText.setText(this.saldoActivity.getString(R.string.text_saldo_barik)+saldo);
+	        saldoText.setText(this.saldoActivity.getString(R.string.text_saldo_barik)+" "+saldo);
 	        Handler mHandler = new Handler();
     		mHandler.post(new ProgressBarController(this.saldoActivity, 100));
 			
