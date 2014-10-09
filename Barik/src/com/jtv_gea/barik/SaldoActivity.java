@@ -83,6 +83,8 @@ public class SaldoActivity extends ActionBarActivity {
 		    		        "})()";
 //					view.loadUrl("javascript:document.getElementById(\"username::content\").innerHTML = \"gorka\";");
 		    		view.loadUrl("javascript: "+javaScript);
+		    		Handler mHandler = new Handler();
+		    		mHandler.post(new ProgressBarController((SaldoActivity) view.getContext(), 33));
 
 		    	}
 		    	else if (cont ==3){//Pagina principal
@@ -94,13 +96,16 @@ public class SaldoActivity extends ActionBarActivity {
 		    		//String javaScript2 ="javascript:$(document).ajaxComplete(function (event, request, settings) {window.HTMLOUT.processHTML(document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].innerHTML);});";
 //					view.loadUrl("javascript:document.getElementById(\"username::content\").innerHTML = \"gorka\";");
 		    		view.loadUrl("javascript: "+javaScript);
-		    		
+		    		Handler mHandler = new Handler();
+		    		mHandler.post(new ProgressBarController((SaldoActivity) view.getContext(), 77));
 		    		
 		    	}
 		    	else if(cont == 4){//Titulos validos
 		    		
 		    		//Aqui no entra porque creo que al hacer click en titulos validos hace una llamada ajax, y por eso no salta OnPageFinished
 		    		view.loadUrl("javascript:window.HTMLOUT.processHTML(document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].innerHTML);");
+		    		Handler mHandler = new Handler();
+		    		mHandler.post(new ProgressBarController((SaldoActivity) view.getContext(), 80));
 		    	}
 		    	cont++;	
 		    	
@@ -156,6 +161,8 @@ public class SaldoActivity extends ActionBarActivity {
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!\n!\n!\n!\n!\n!\n!"+saldo);
 	        TextView saldoText= (TextView) this.saldoActivity.findViewById(R.id.text_saldo);
 	        saldoText.setText(this.saldoActivity.getString(R.string.text_saldo_barik)+saldo);
+	        Handler mHandler = new Handler();
+    		mHandler.post(new ProgressBarController(this.saldoActivity, 100));
 			
 		}
 		
