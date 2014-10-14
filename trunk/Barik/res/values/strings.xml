@@ -6,9 +6,8 @@
     <string name="edit_email">Email</string>
     <string name="edit_password">Password</string>
     <string name="button_login">Login</string>
-    <string name="title_activity_saldo_actual">SaldoActualActivity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_saldo">SaldoActivity</string>
+    <string name="title_activity_saldo_actual">Saldo Actual</string>
     <string name="text_saldo_barik">El saldo de su barik es: </string>
     <string name="text_actualizando">Actualizando… </string>
     <string name="text_actualizado">¡Actualizado! </string>

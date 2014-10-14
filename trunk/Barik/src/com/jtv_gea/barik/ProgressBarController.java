@@ -22,13 +22,11 @@ public class ProgressBarController implements Runnable{
 	@Override
 	public void run() {
 		
-		ProgressBar progressBar=(ProgressBar)this.saldoActivity.findViewById(R.id.progressBarLoading);
+		ProgressBar progressBar=(ProgressBar)this.saldoActivity.findViewById(R.id.progressBar);
 		progressBar.setProgress(this.progress);
 		
 		if(this.progress==MAXVALUE){
 			//cambiar el texto
-			 TextView loadingText=(TextView)this.saldoActivity.findViewById(R.id.textLoading);
-			 loadingText.setText(this.saldoActivity.getString(R.string.text_actualizado));
 		}
 		
 	}
