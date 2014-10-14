@@ -26,7 +26,7 @@ public class ProgressBarController implements Runnable{
 		progressBar.setProgress(this.progress);
 		
 		if(this.progress==MAXVALUE){
-			//cambiar el texto
+			//cambiar el texto o hacer lo que sea
 		}
 		
 	}
