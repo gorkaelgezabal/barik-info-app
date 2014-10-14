@@ -5,16 +5,23 @@ import com.jtv_gea.barik.modelo.BarikUser;
 import com.jtv_gea.barik.modelo.Persistencia;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.ActionBar.LayoutParams;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class SaldoActivity extends ActionBarActivity {
@@ -23,7 +30,38 @@ public class SaldoActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		// create new ProgressBar and style it
+		final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
+		progressBar.setId(R.id.progressBar);
+		progressBar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 24));
+//		progressBar.setProgress(65);
+
+		// retrieve the top view of our application
+		final FrameLayout decorView = (FrameLayout) getWindow().getDecorView();
+		decorView.addView(progressBar);
+
+		// Here we try to position the ProgressBar to the correct position by looking
+		// at the position where content area starts. But during creating time, sizes 
+		// of the components are not set yet, so we have to wait until the components
+		// has been laid out
+		// Also note that doing progressBar.setY(136) will not work, because of different
+		// screen densities and different sizes of actionBar
+		ViewTreeObserver observer = progressBar.getViewTreeObserver();
+		observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+		    @Override
+		    public void onGlobalLayout() {
+		        View contentView = decorView.findViewById(android.R.id.content);
+		        progressBar.setY(contentView.getY() - 10);
+
+		        ViewTreeObserver observer = progressBar.getViewTreeObserver();
+		        observer.removeOnGlobalLayoutListener(this);
+		    }
+		});
+		
+		
+		
 		setContentView(R.layout.activity_saldo);
+		
 		Persistencia persistencia= new Persistencia(this.getApplicationContext());
 		BarikUser user =persistencia.loadUser();
 		TextView saldoText= (TextView) this.findViewById(R.id.text_saldo);
@@ -58,7 +96,8 @@ public class SaldoActivity extends ActionBarActivity {
 		/* JavaScript must be enabled if you want it to work, obviously */
 		browser.getSettings().setJavaScriptEnabled(true);
 		browser.setWebChromeClient(new WebChromeClient());
-		browser.getSettings().setDomStorageEnabled(true);
+		browser.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+//		browser.getSettings().setLoadsImagesAutomatically(false);
 		browser.getSettings().setSaveFormData(false);
 		/* Register a new JavaScript interface called HTMLOUT */
 		browser.addJavascriptInterface(new MyJavaScriptInterface(this, new Handler()), "HTMLOUT");
