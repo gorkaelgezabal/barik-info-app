@@ -1,5 +1,7 @@
 package com.jtv_gea.barik.interaccion;
 
+import java.util.Date;
+
 import android.os.Handler;
 import android.webkit.JavascriptInterface;
 
@@ -28,7 +30,7 @@ public class JavaScriptInterface {
      * @param saldo recogido de la pagina web
      */
 	@JavascriptInterface
-    public void processHTML(String saldo)
+    public void processHTML(String saldo, String caducidad, String nCliente, String situacion, String tipo, String nTarjeta)
     {
 		System.out.println("Saldo: "+saldo);
 		//Editar el saldo en la pantalla
@@ -37,7 +39,15 @@ public class JavaScriptInterface {
 		//Guardar en fichero el nuevo dato
 		Persistencia persistencia= new Persistencia(saldoActivity.getApplicationContext());
 		BarikUser user =persistencia.loadUser();
-		user.setLastBalance(saldo);
+		user.setSaldo(saldo);
+		user.setFechaUltimaActualizacion(new Date());
+		user.setCaducidad(caducidad);
+		user.setnCliente(nCliente);
+		user.setSituacion(situacion);
+		user.setTipo(tipo);
+		user.setnTarjeta(nTarjeta);
+		
 		persistencia.saveUser(user);
+		
     }
 }

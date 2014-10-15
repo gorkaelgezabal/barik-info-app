@@ -3,8 +3,10 @@ package com.jtv_gea.barik.interaccion;
 import android.os.Handler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 
 import com.jtv_gea.barik.ProgressBarController;
+import com.jtv_gea.barik.R;
 import com.jtv_gea.barik.SaldoActivity;
 import com.jtv_gea.barik.modelo.BarikUser;
 import com.jtv_gea.barik.modelo.Persistencia;
@@ -20,7 +22,21 @@ public class InteraccionWeb extends WebViewClient {
 			+ "document.getElementById('pt1:j_id_id14:1:j_id_id23').click(); "
 			+ "})();";
 	
-	private static final String JAVASCRIPT_OBTENERSALDO = "javascript: (function(){try{window.HTMLOUT.processHTML(document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML);}catch (e) {}})();";
+	//private static final String JAVASCRIPT_DATOSUSUARIO = "javascript: (function(){try{window.HTMLOUT.processHTML(document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML);}catch (e) {}})();";
+	
+	private static final String JAVASCRIPT_DATOSUSUARIO = "javascript: ("
+			+ "function(){"
+			+ "try{"
+			+ "var saldo =document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML;"
+			+ "var caducidad = document.getElementById('pt1:j_id_id36:subform:j_id_id8pc2::content').innerHTML;"
+			+ "var nCliente = document.getElementById('pt1:j_id_id36:subform:j_id_id10pc2::content').innerHTML;"
+			+ "var situacion = document.getElementById('pt1:j_id_id36:subform:j_id_id12pc2::content').innerHTML;"
+			+ "var tipo = document.getElementById('pt1:j_id_id36:subform:j_id_id9pc2::content').innerHTML;"
+			+ "var nTarjeta = document.getElementById('pt1:j_id_id36:subform:j_id_id6pc2::content').innerHTML;"
+			+ "window.HTMLOUT.processHTML(saldo, caducidad, nCliente, situacion, tipo, nTarjeta);"
+			+ "}catch (e) {}"
+			+ "}"
+			+ ")();";
 	
 
 	@Override
@@ -63,7 +79,7 @@ public class InteraccionWeb extends WebViewClient {
 	public void onLoadResource(WebView view, String url) {
 		if (url.equals("https://barikweb.cotrabi.com/sagb/afr/info.png")) {
 			
-			view.loadUrl(JAVASCRIPT_OBTENERSALDO);
+			view.loadUrl(JAVASCRIPT_DATOSUSUARIO);
 		}
 
 	}

@@ -1,6 +1,7 @@
 package com.jtv_gea.barik.interaccion;
 
 import android.os.Handler;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jtv_gea.barik.ProgressBarController;
@@ -19,7 +20,7 @@ public class HiloEditarSaldo implements Runnable{
 	public void run() {
 
         //editar texto
-		TextView saldoText= (TextView) this.saldoActivity.findViewById(R.id.text_saldo);
+		TextView saldoText= (TextView) this.saldoActivity.findViewById(R.id.text_saldo_barik);
         saldoText.setText(this.saldoActivity.getString(R.string.text_saldo_barik)+" "+saldo);
         Handler mHandler = new Handler();
         
