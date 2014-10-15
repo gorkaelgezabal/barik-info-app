@@ -51,13 +51,28 @@ public class MainActivity extends ActionBarActivity {
 		EditText et_user = (EditText)findViewById(R.id.et_user);
 		EditText et_pass = (EditText)findViewById(R.id.et_pass);
 		
-		Persistencia db = new Persistencia(this);
-		BarikUser barikUser = new BarikUser();
-		barikUser.setUsername(et_user.getText().toString());
-		barikUser.setPassword(et_pass.getText().toString());
-		db.saveUser(barikUser);
+		String user = et_user.getText().toString();
+		String pass = et_pass.getText().toString();
 		
-		Intent saldoActivity = new Intent(this, SaldoActivity.class);
-		startActivity(saldoActivity);
-	}
+		if(user.matches("")){
+			et_user.setError(getResources().getString(R.string.text_user_vacio));
+		}
+		
+		if(pass.matches("")){
+			et_pass.setError(getResources().getString(R.string.text_pass_vacio));
+		}
+		
+		if(!user.matches("") && !pass.matches("")){
+			Persistencia db = new Persistencia(this);
+			BarikUser barikUser = new BarikUser();
+			barikUser.setUsername(user);
+			barikUser.setPassword(pass);
+			db.saveUser(barikUser);
+			
+			Intent saldoActivity = new Intent(this, SaldoActivity.class);
+			startActivity(saldoActivity);
+
+		}
+		
+			}
 }
