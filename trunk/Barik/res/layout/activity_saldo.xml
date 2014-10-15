@@ -6,9 +6,9 @@
         android:id="@+id/background_image"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:contentDescription="@string/title_activity_saldo_actual"
         android:scaleType="centerCrop"
-        android:src="@drawable/huella"
-        android:contentDescription="@string/title_activity_saldo_actual" >
+        android:src="@drawable/huellaclara" >
 
     </ImageView>
 	<RelativeLayout
@@ -57,6 +57,144 @@
 	        android:layout_marginRight="15dp"
 	        android:layout_alignTop="@+id/text_saldo_barik"
 	        android:text="@string/text_saldo_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+
+	    <TextView
+	        android:id="@+id/text_fecha_actualizacion_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/text_saldo_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_marginLeft="18dp"
+	        android:text="@string/text_fecha_actualizacion_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/resultado_fecha_actualizacion_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/resultado_saldo_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="15dp"
+	        android:text="@string/text_fecha_actualizacion_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/text_fecha_caducidad_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/text_fecha_actualizacion_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_marginLeft="18dp"
+	        android:text="@string/text_fecha_caducidad_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/resultado_fecha_caducidad_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/resultado_fecha_actualizacion_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="15dp"
+	        android:text="@string/text_fecha_caducidad_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/text_tipo_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/text_fecha_caducidad_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_marginLeft="18dp"
+	        android:text="@string/text_tipo_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/resultado_tipo_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/resultado_fecha_caducidad_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="15dp"
+	        android:text="@string/text_tipo_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/text_numero_cliente_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/text_tipo_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_marginLeft="18dp"
+	        android:text="@string/text_numero_cliente_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/resultado_numero_cliente_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/resultado_tipo_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="15dp"
+	        android:text="@string/text_numero_cliente_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/text_situacion_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/text_numero_cliente_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_marginLeft="18dp"
+	        android:text="@string/text_situacion_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/resultado_situacion_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/resultado_numero_cliente_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="15dp"
+	        android:text="@string/text_situacion_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/text_numero_tarjeta_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/text_situacion_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_marginLeft="18dp"
+	        android:text="@string/text_numero_tarjeta_barik"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textSize="18sp" />
+	    
+	    <TextView
+	        android:id="@+id/resultado_numero_tarjeta_barik"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/resultado_situacion_barik"
+	        android:layout_marginTop="29dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="15dp"
+	        android:text="@string/text_numero_tarjeta_barik"
 	        android:textAppearance="?android:attr/textAppearanceLarge"
 	        android:textSize="18sp" />
 	
