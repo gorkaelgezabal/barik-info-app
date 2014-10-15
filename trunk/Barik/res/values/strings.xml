@@ -11,8 +11,12 @@
     <string name="text_saldo_barik">Saldo: </string>
     <string name="text_actualizando">Actualizando… </string>
     <string name="text_actualizado">¡Actualizado! </string>
+    <string name="text_user_pass_incorrectos">El usuario o password son incorrectos.</string>
+    <string name="text_user_vacio">Debe introducir un usuario</string>
+    <string name="text_pass_vacio">Debe introducir una contraseña</string>
     <string name="text_recargar">Recargar </string>
     <string name="barik">Barik</string>
+
 
 
 </resources>
