@@ -4,9 +4,9 @@
     tools:context="com.jtv_gea.barik.SaldoActivity" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_reargar"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/text_recargar"
         app:showAsAction="never"/>
 
 </menu>
