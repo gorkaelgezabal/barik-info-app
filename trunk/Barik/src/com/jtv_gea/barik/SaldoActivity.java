@@ -1,7 +1,6 @@
 package com.jtv_gea.barik;
 
 
-import com.jtv_gea.barik.interaccion.HiloEditarSaldo;
 import com.jtv_gea.barik.interaccion.InteraccionWeb;
 import com.jtv_gea.barik.interaccion.JavaScriptInterface;
 import com.jtv_gea.barik.modelo.BarikUser;
@@ -10,7 +9,6 @@ import com.jtv_gea.barik.modelo.Persistencia;
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -18,12 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -69,8 +64,20 @@ public class SaldoActivity extends ActionBarActivity {
 		//Mostrar en la pantalla el ultimo dato de saldo guardado
 		Persistencia persistencia= new Persistencia(this.getApplicationContext());
 		BarikUser user =persistencia.loadUser();
-		TextView saldoText= (TextView) this.findViewById(R.id.text_saldo_barik);
-        saldoText.setText(this.getString(R.string.text_saldo_barik)+" "+user.getSaldo());
+		TextView saldoText= (TextView) this.findViewById(R.id.resultado_saldo_barik);
+        saldoText.setText(user.getSaldo());
+        TextView fechaActualizacionText= (TextView) this.findViewById(R.id.resultado_fecha_actualizacion_barik);
+        fechaActualizacionText.setText(user.getFechaUltimaActualizacionFormateada());
+        TextView fechaCaducidadText= (TextView) this.findViewById(R.id.resultado_fecha_caducidad_barik);
+        fechaCaducidadText.setText(user.getCaducidad());
+        TextView tipoText= (TextView) this.findViewById(R.id.resultado_tipo_barik);
+        tipoText.setText(user.getTipo());
+        TextView numClienteText= (TextView) this.findViewById(R.id.resultado_numero_cliente_barik);
+        numClienteText.setText(user.getnCliente());
+        TextView numSituacionText= (TextView) this.findViewById(R.id.resultado_situacion_barik);
+        numSituacionText.setText(user.getSituacion());
+        TextView numTarjetaText= (TextView) this.findViewById(R.id.resultado_numero_tarjeta_barik);
+        numTarjetaText.setText(user.getnTarjeta());
         
         //actualizar el saldo
 		this.getSaldo();

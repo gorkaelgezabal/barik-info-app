@@ -33,8 +33,7 @@ public class JavaScriptInterface {
     public void processHTML(String saldo, String caducidad, String nCliente, String situacion, String tipo, String nTarjeta)
     {
 		System.out.println("Saldo: "+saldo);
-		//Editar el saldo en la pantalla
-		mHandler.post(new HiloEditarSaldo(saldo, this.saldoActivity));
+		
 		
 		//Guardar en fichero el nuevo dato
 		Persistencia persistencia= new Persistencia(saldoActivity.getApplicationContext());
@@ -48,6 +47,9 @@ public class JavaScriptInterface {
 		user.setnTarjeta(nTarjeta);
 		
 		persistencia.saveUser(user);
+		
+		//Editar el saldo en la pantalla
+		mHandler.post(new HiloEditarSaldo(user, this.saldoActivity));
 		
     }
 }
