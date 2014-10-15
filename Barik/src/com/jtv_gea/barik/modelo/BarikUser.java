@@ -1,7 +1,10 @@
 package com.jtv_gea.barik.modelo;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class BarikUser implements Serializable{
 	
@@ -95,6 +98,17 @@ public class BarikUser implements Serializable{
 	}
 	public void setnTarjeta(String nTarjeta) {
 		this.nTarjeta = nTarjeta;
+	}
+	public String getFechaUltimaActualizacionFormateada(){
+		
+		DateFormat sdf =SimpleDateFormat.getDateInstance();
+		String today = sdf.format(new Date());
+		String formatedDate = sdf.format(fechaUltimaActualizacion);
+		String fechaRetornar=formatedDate;
+		if(today.equals(formatedDate)){
+			fechaRetornar = new SimpleDateFormat("HH:mm", Locale.ENGLISH).format(fechaUltimaActualizacion);
+		}
+		return fechaRetornar;
 	}
 	
 	
