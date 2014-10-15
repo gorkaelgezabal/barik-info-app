@@ -69,8 +69,8 @@ public class SaldoActivity extends ActionBarActivity {
 		//Mostrar en la pantalla el ultimo dato de saldo guardado
 		Persistencia persistencia= new Persistencia(this.getApplicationContext());
 		BarikUser user =persistencia.loadUser();
-		TextView saldoText= (TextView) this.findViewById(R.id.text_saldo);
-        saldoText.setText(this.getString(R.string.text_saldo_barik)+" "+user.getLastBalance());
+		TextView saldoText= (TextView) this.findViewById(R.id.text_saldo_barik);
+        saldoText.setText(this.getString(R.string.text_saldo_barik)+" "+user.getSaldo());
         
         //actualizar el saldo
 		this.getSaldo();
@@ -89,7 +89,8 @@ public class SaldoActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_reargar) {
+			this.getSaldo();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
