@@ -8,9 +8,11 @@
     <string name="button_login">Login</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_saldo_actual">Saldo Actual</string>
-    <string name="text_saldo_barik">El saldo de su barik es: </string>
+    <string name="text_saldo_barik">Saldo: </string>
     <string name="text_actualizando">Actualizando… </string>
     <string name="text_actualizado">¡Actualizado! </string>
+    <string name="text_recargar">Recargar </string>
+    <string name="barik">Barik</string>
 
 
 </resources>
