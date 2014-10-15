@@ -9,8 +9,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_saldo_actual">Saldo Actual</string>
     <string name="text_saldo_barik">Saldo: </string>
-    <string name="text_actualizando">Actualizando… </string>
-    <string name="text_actualizado">¡Actualizado! </string>
+    <string name="text_fecha_actualizacion_barik">Actualizado: </string>
+    <string name="text_fecha_caducidad_barik">Caducidad: </string>
+    <string name="text_tipo_barik">Tipo: </string>
+    <string name="text_numero_cliente_barik">Nº Cliente: </string>
+    <string name="text_situacion_barik">Situación: </string>
+    <string name="text_numero_tarjeta_barik">Nº Tarjeta: </string>
     <string name="text_user_pass_incorrectos">El usuario o password son incorrectos.</string>
     <string name="text_user_vacio">Debe introducir un usuario</string>
     <string name="text_pass_vacio">Debe introducir una contraseña</string>
