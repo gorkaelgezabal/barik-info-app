@@ -29,6 +29,7 @@ public class SaldoActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		// create new ProgressBar and style it
 		final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
 		progressBar.setId(R.id.progressBar);
@@ -121,5 +122,6 @@ public class SaldoActivity extends ActionBarActivity {
 		browser.loadUrl("https://barikweb.cotrabi.com/sagb/faces/Login.jspx");
 		
 	}
+	
 
 }
