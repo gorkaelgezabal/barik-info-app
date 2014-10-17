@@ -100,14 +100,17 @@ public class BarikUser implements Serializable{
 		this.nTarjeta = nTarjeta;
 	}
 	public String getFechaUltimaActualizacionFormateada(){
-		
-		DateFormat sdf =SimpleDateFormat.getDateInstance();
-		String today = sdf.format(new Date());
-		String formatedDate = sdf.format(fechaUltimaActualizacion);
-		String fechaRetornar=formatedDate;
-		if(today.equals(formatedDate)){
-			fechaRetornar = new SimpleDateFormat("HH:mm", Locale.ENGLISH).format(fechaUltimaActualizacion);
+		String fechaRetornar="-";
+		if(fechaUltimaActualizacion!=null){
+			DateFormat sdf =SimpleDateFormat.getDateInstance();
+			String today = sdf.format(new Date());
+			String formatedDate = sdf.format(fechaUltimaActualizacion);
+			fechaRetornar=formatedDate;
+			if(today.equals(formatedDate)){
+				fechaRetornar = new SimpleDateFormat("HH:mm", Locale.ENGLISH).format(fechaUltimaActualizacion);
+			}
 		}
+		
 		return fechaRetornar;
 	}
 	
