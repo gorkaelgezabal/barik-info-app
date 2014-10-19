@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,12 +23,17 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class SaldoActivity extends ActionBarActivity {
 	private DrawerLayout mDrawerLayout;
+	private String[] menuTitles;
+	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
@@ -92,6 +98,14 @@ public class SaldoActivity extends ActionBarActivity {
 		//Menu lateral
 		
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		menuTitles = getResources().getStringArray(R.array.menu_array);
+		mDrawerList = (ListView) findViewById(R.id.left_drawer);
+		
+		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, menuTitles));
+		
+		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+		
 		mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
@@ -120,6 +134,21 @@ public class SaldoActivity extends ActionBarActivity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
+	}
+	
+	private class DrawerItemClickListener implements ListView.OnItemClickListener {
+	    @Override
+	    public void onItemClick(AdapterView parent, View view, int position, long id) {
+	        Persistencia persistencia = new Persistencia(view.getContext());
+	        BarikUser barikUser = new BarikUser("", "");
+	        persistencia.saveUser(barikUser);
+	        
+	        
+	        
+	        Intent intent = new Intent(view.getContext(), MainActivity.class);
+			view.getContext().startActivity(intent);
+	        
+	    }
 	}
 
 	/* Called whenever we call invalidateOptionsMenu() */
