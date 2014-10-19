@@ -20,7 +20,8 @@
     <string name="text_pass_vacio">Debe introducir una contraseña</string>
     <string name="text_recargar">Actualizar </string>
     <string name="barik">Barik</string>
-
+    <string name="drawer_open">Open</string>
+	<string name="drawer_close">Close</string>
 
 
 </resources>
