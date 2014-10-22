@@ -2,10 +2,12 @@ package com.jtv_gea.barik.interaccion;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 import android.widget.ImageView;
+
 
 
 import com.jtv_gea.barik.MainActivity;
@@ -50,11 +52,12 @@ public class InteraccionWeb extends WebViewClient {
 	@Override
 	public void onPageFinished(WebView view, String url) {
 		if (url.equals(URL_PASO0)) {
+			Log.i(this.getClass().getName(), "paso 0");
 			Handler mHandler = new Handler();
 			mHandler.post(new ProgressBarController((SaldoActivity) view
 					.getContext(), 15));
 		} else if (url.contains(URL_PASO1)) {// Login
-			
+			Log.i(this.getClass().getName(), "pagina de login...");
 			boolean loginError;
 			String[] urlSplited = url.split("\\?");
 			String params = urlSplited[1];
@@ -62,6 +65,7 @@ public class InteraccionWeb extends WebViewClient {
 			loginError = params.contains(PARAM_1) && !params.contains(PARAM_2)&&!params.contains(PARAM_3);
 			
 			if(loginError){
+				Log.i(this.getClass().getName(), "error de logeo");
 
 				//Se borra el usuario
 				Persistencia persistencia = new Persistencia(view.getContext());
@@ -77,6 +81,7 @@ public class InteraccionWeb extends WebViewClient {
 				
 			}
 			else{
+				Log.i(this.getClass().getName(), "logeando");
 				Persistencia persistencia = new Persistencia(view.getContext());
 				BarikUser user = persistencia.loadUser();
 				String javaScript = "(function(){ "
@@ -93,10 +98,12 @@ public class InteraccionWeb extends WebViewClient {
 
 		} else if (url.equals(URL_PASO2)) {
 			// transicion, unicamente actualizar progress bar
+			Log.i(this.getClass().getName(), "paso 2, llamada sin nada");
 			Handler mHandler = new Handler();
 			mHandler.post(new ProgressBarController((SaldoActivity) view
 					.getContext(), 60));
 		} else if (url.contains(URL_PASO3)) {
+			Log.i(this.getClass().getName(), "abriendo tab de saldo");
 			// abrir la pestaña del saldo
 			view.loadUrl(JAVASCRIPT_TABSALDO);
 			Handler mHandler = new Handler();
