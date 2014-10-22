@@ -220,7 +220,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
-        android:background="#084B5E"
+        android:background="#E6424242"
         android:divider="@drawable/list_divider" 
         android:dividerHeight="1px"/>
 </android.support.v4.widget.DrawerLayout>	
