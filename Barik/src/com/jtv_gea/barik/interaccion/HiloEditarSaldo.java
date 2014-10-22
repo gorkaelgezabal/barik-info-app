@@ -39,7 +39,7 @@ public class HiloEditarSaldo implements Runnable{
         Handler mHandler = new Handler();
         
         //actualizar progress bar
-		mHandler.post(new ProgressBarController(this.saldoActivity, 100));
+		mHandler.post(new ProgressBarController(this.saldoActivity, 00));
 		
 	}
 }

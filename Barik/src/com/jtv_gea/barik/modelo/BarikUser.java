@@ -99,6 +99,11 @@ public class BarikUser implements Serializable{
 	public void setnTarjeta(String nTarjeta) {
 		this.nTarjeta = nTarjeta;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getFechaUltimaActualizacionFormateada(){
 		String fechaRetornar="-";
 		if(fechaUltimaActualizacion!=null){
