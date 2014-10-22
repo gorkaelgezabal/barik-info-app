@@ -1,6 +1,7 @@
 package com.jtv_gea.barik.interaccion;
 
 import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.jtv_gea.barik.ProgressBarController;
@@ -39,7 +40,8 @@ public class HiloEditarSaldo implements Runnable{
         Handler mHandler = new Handler();
         
         //actualizar progress bar
-		mHandler.post(new ProgressBarController(this.saldoActivity, 00));
+        Log.i(this.getClass().getName(), "informacion recogida, actualizando la pagina");
+		mHandler.post(new ProgressBarController(this.saldoActivity, 0));
 		
 	}
 }

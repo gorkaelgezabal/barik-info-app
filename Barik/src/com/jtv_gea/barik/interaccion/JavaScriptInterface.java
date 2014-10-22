@@ -3,6 +3,7 @@ package com.jtv_gea.barik.interaccion;
 import java.util.Date;
 
 import android.os.Handler;
+import android.util.Log;
 import android.webkit.JavascriptInterface;
 
 import com.jtv_gea.barik.SaldoActivity;
@@ -32,10 +33,11 @@ public class JavaScriptInterface {
 	@JavascriptInterface
     public void processHTML(String saldo, String caducidad, String nCliente, String situacion, String tipo, String nTarjeta)
     {
-		System.out.println("Saldo: "+saldo);
+		Log.i(this.getClass().getName(), "Saldo: "+saldo);
 		
 		
 		//Guardar en fichero el nuevo dato
+		Log.i(this.getClass().toString(), "informacion recogida, guardando en fichero...");
 		Persistencia persistencia= new Persistencia(saldoActivity.getApplicationContext());
 		BarikUser user =persistencia.loadUser();
 		user.setSaldo(saldo);
