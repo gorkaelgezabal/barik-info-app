@@ -22,6 +22,8 @@
     <string name="barik">Barik</string>
     <string name="drawer_open">Open</string>
 	<string name="drawer_close">Close</string>
+	<string name="user">Usuario</string>
+	<string name="password">Contraseña</string>
 	<string-array name="menu_array">
         <item>Salir</item>
     </string-array>
