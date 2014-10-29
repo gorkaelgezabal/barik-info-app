@@ -86,7 +86,7 @@ public class BaseActivity extends Activity {
 					view.getContext().startActivity(intent);
 					break;
 				case 2:
-					intent = new Intent(view.getContext(), SaldoActivity.class);
+					intent = new Intent(view.getContext(), InfoActivity.class);
 					view.getContext().startActivity(intent);
 					break;
 				case 3:

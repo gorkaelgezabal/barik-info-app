@@ -21,6 +21,8 @@
     <string name="text_recargar">Actualizar </string>
     <string name="barik">Barik</string>
     <string name="drawer_open">Open</string>
+    <string name="information">Información</string>
+
     <string name="drawer_close">Close</string>
     <string name="user">Usuario</string>
     <string name="password">Contraseña</string>
@@ -31,9 +33,15 @@
         <item>Info</item>
         <item>Salir</item>
     </string-array>
-
+    <string name="title_activity_info">InfoActivity</string>
     <string name="title_activity_base">BaseActivity</string>
+
+    <string name="infoActualizacion">La información mostrada en esta aplicacion depende de la propia pagina web de barik. Esta pagina avisa de lo siguiente: </string>
+    <string name="infoWebBarik">«Los movimientos mostrados pueden diferir de los reales, ya que la actualización de la información no es inmediata. Pueden faltar los viajes y recargas de los últimos días.»
+</string>
+
     <string name="title_activity_preference">PreferenceActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
+
 
 </resources>
