@@ -33,6 +33,7 @@ import android.widget.TextView;
 
 public class SaldoActivity extends BaseActivity {
 
+	private static Integer ACTIVITY_INDEX = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,14 +66,13 @@ public class SaldoActivity extends BaseActivity {
 		    }
 		});
 		
-		
-		
 		setContentView(R.layout.activity_saldo);
-		super.createNavigationDrawer();
 		
-//		!!!!!!!!!!!!!!!!!!!!!!!!!
+		
+		super.setCurrentActivityIndex(ACTIVITY_INDEX);
+		super.createNavigationDrawer();
 		ListView  mDrawerList = (ListView) findViewById(R.id.left_drawer);
-		mDrawerList.setItemChecked(1, true);
+		mDrawerList.setItemChecked(ACTIVITY_INDEX, true);
 		
 
         
