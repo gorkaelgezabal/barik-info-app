@@ -21,14 +21,17 @@
     <string name="text_recargar">Actualizar </string>
     <string name="barik">Barik</string>
     <string name="drawer_open">Open</string>
-	<string name="drawer_close">Close</string>
-	<string name="user">Usuario</string>
-	<string name="password">Contraseña</string>
-	<string-array name="menu_array">
-	    <item>Idioma</item>
-	    <item>Info</item>
+    <string name="drawer_close">Close</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+
+    <string-array name="menu_array">
+        <item>Saldo</item>
+        <item>Idioma</item>
+        <item>Info</item>
         <item>Salir</item>
     </string-array>
 
+    <string name="title_activity_base">BaseActivity</string>
 
 </resources>

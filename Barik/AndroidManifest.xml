@@ -17,21 +17,24 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
+            android:label="@string/app_name"
             android:noHistory="true"
-            android:label="@string/app_name" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
-            android:screenOrientation="portrait"
             android:name=".SaldoActivity"
-            android:label="@string/title_activity_saldo_actual" 
-            android:noHistory="true">
+            android:label="@string/title_activity_saldo_actual"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".BaseActivity"
+            android:label="@string/title_activity_base" >
         </activity>
     </application>
 

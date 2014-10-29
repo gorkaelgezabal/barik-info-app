@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
 	
 	@Override
@@ -47,6 +47,8 @@ public class MainActivity extends Activity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
 	
 	public void login(View view){
 		EditText et_user = (EditText)findViewById(R.id.et_user);
