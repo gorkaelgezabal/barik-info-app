@@ -24,6 +24,7 @@ public class BaseActivity extends Activity {
 	private ActionBarDrawerToggle mDrawerToggle;
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
+	private Integer currentActivityIndex;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +72,36 @@ public class BaseActivity extends Activity {
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 	    @Override
 	    public void onItemClick(AdapterView parent, View view, int position, long id) {
-	        Persistencia persistencia = new Persistencia(view.getContext());
-	        BarikUser barikUser = new BarikUser("", "");
-	        persistencia.saveUser(barikUser);
+	    	
+	    	Intent intent;
+	    	
+	    	if(currentActivityIndex != position){
+	    		switch (position) {
+				case 0:
+					intent = new Intent(view.getContext(), SaldoActivity.class);
+					view.getContext().startActivity(intent);
+					break;
+				case 1:
+					intent = new Intent(view.getContext(), SettingsActivity.class);
+					view.getContext().startActivity(intent);
+					break;
+				case 2:
+					intent = new Intent(view.getContext(), SaldoActivity.class);
+					view.getContext().startActivity(intent);
+					break;
+				case 3:
+					Persistencia persistencia = new Persistencia(view.getContext());
+			        BarikUser barikUser = new BarikUser("", "");
+			        persistencia.saveUser(barikUser);
+			        
+			        intent = new Intent(view.getContext(), MainActivity.class);
+					view.getContext().startActivity(intent);
+				default:
+					break;
+				}
+	    	}
+	    	
 	        
-	        Intent intent = new Intent(view.getContext(), MainActivity.class);
-			view.getContext().startActivity(intent);
 	        
 	    }
 	}
@@ -119,4 +144,14 @@ public class BaseActivity extends Activity {
         // Handle your other action bar items...
 		return super.onOptionsItemSelected(item);
 	}
+
+	public Integer getCurrentActivityIndex() {
+		return currentActivityIndex;
+	}
+
+	public void setCurrentActivityIndex(Integer currentActivityIndex) {
+		this.currentActivityIndex = currentActivityIndex;
+	}
+	
+	
 }
