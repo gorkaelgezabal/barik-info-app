@@ -85,12 +85,12 @@ public class SettingsActivity extends BaseActivity {
 	    }
 	    
 	   	 editor.commit();
-//		 Locale.setDefault(locale);
-//		 Configuration config = new Configuration();
-//		 config.locale = locale;
-//	//	 view.getContext().getResources().updateConfiguration(config, null);
-//		 getBaseContext().getResources().updateConfiguration(config, 
-//			      getBaseContext().getResources().getDisplayMetrics());
+		 Locale.setDefault(locale);
+		 Configuration config = new Configuration();
+		 config.locale = locale;
+	//	 view.getContext().getResources().updateConfiguration(config, null);
+		 getBaseContext().getResources().updateConfiguration(config, 
+			      getBaseContext().getResources().getDisplayMetrics());
 		 
 		 super.createNavigationDrawer();
 	}

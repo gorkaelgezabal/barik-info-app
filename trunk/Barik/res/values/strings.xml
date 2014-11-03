@@ -20,12 +20,13 @@
     <string name="text_pass_vacio">Debe introducir una contraseña</string>
     <string name="text_recargar">Actualizar </string>
     <string name="barik">Barik</string>
-    <string name="drawer_open">Open</string>
+    <string name="drawer_open">Abrir</string>
     <string name="information">Información</string>
-
-    <string name="drawer_close">Close</string>
+    <string name="drawer_close">Cerrar</string>
     <string name="user">Usuario</string>
     <string name="password">Contraseña</string>
+    <string name="euskara">Euskera</string>
+    <string name="espaniol">Español</string>
 
     <string-array name="menu_array">
         <item>Saldo</item>
