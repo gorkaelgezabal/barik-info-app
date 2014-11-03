@@ -27,6 +27,17 @@ public class SettingsActivity extends BaseActivity {
 		super.createNavigationDrawer();
 		ListView  mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		mDrawerList.setItemChecked(ACTIVITY_INDEX, true);
+		
+		SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
+		String locale = prefs.getString("locale", "nope");
+		RadioButton rb;
+		if (locale.equals("es_ES")){
+			 rb = (RadioButton) findViewById(R.id.radio_espaniol);
+			
+		}else{
+			rb = (RadioButton) findViewById(R.id.radio_euskera);
+		}
+		rb.setChecked(true);
 	}
 
 	@Override
@@ -45,6 +56,7 @@ public class SettingsActivity extends BaseActivity {
 		if (id == R.id.action_settings) {
 			return true;
 		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 	
@@ -52,37 +64,34 @@ public class SettingsActivity extends BaseActivity {
 	    // Is the button now checked?
 	    boolean checked = ((RadioButton) view).isChecked();
 	    SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
-	    
+	    Locale locale = new Locale("es_ES");
+	    SharedPreferences.Editor editor= prefs.edit();
 	    // Check which radio button was clicked
 	    switch(view.getId()) {
 	        case R.id.radio_euskera:
 	            if (checked){
-	            	
-	            	 prefs.edit().putString("locale", "eu_ES");
-	            	 Locale locale = new Locale("eu_ES");
-	            	 Locale.setDefault(locale);
-	            	 Configuration config = new Configuration();
-	            	 config.locale = locale;
-//	            	 view.getContext().getResources().updateConfiguration(config, null);
-	            	 getBaseContext().getResources().updateConfiguration(config, 
-	            		      getBaseContext().getResources().getDisplayMetrics());
+	            	editor.putString("locale", "eu_ES");
+	            	 locale = new Locale("eu_ES");
 	            }
 	            	
 	            break;
 	        case R.id.radio_espaniol:
 	            if (checked){
-	            	
-	            	 prefs.edit().putString("locale", "es_ES");
-	            	 Locale locale = new Locale("es_ES");
-	            	 Locale.setDefault(locale);
-	            	 Configuration config = new Configuration();
-	            	 config.locale = locale;
-//	            	 view.getContext().getResources().updateConfiguration(config, null);
-	            	 getBaseContext().getResources().updateConfiguration(config, 
-	            		      getBaseContext().getResources().getDisplayMetrics());
+	            	editor.putString("locale", "es_ES");
+	            	 locale = new Locale("es_ES");
 	            }
 	            	
 	            break;
 	    }
+	    
+	   	 editor.commit();
+//		 Locale.setDefault(locale);
+//		 Configuration config = new Configuration();
+//		 config.locale = locale;
+//	//	 view.getContext().getResources().updateConfiguration(config, null);
+//		 getBaseContext().getResources().updateConfiguration(config, 
+//			      getBaseContext().getResources().getDisplayMetrics());
+		 
+		 super.createNavigationDrawer();
 	}
 }

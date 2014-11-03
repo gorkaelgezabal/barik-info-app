@@ -81,7 +81,11 @@ public class MainActivity extends ActionBarActivity {
 			//Se guarda el idioma
 			SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
 			Locale current = getResources().getConfiguration().locale;
-			prefs.edit().putString("locale", current.getLanguage());
+			String locale = current.toString();
+			
+			SharedPreferences.Editor editor= prefs.edit();
+			editor.putString("locale",locale );
+			editor.commit();
 			
 			Intent saldoActivity = new Intent(this, SaldoActivity.class);
 			startActivity(saldoActivity);

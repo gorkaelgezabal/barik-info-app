@@ -30,7 +30,7 @@
     <string-array name="menu_array">
         <item>Saldo</item>
         <item>Idioma</item>
-        <item>Info</item>
+        <item>Información</item>
         <item>Salir</item>
     </string-array>
     <string name="title_activity_info">InfoActivity</string>
