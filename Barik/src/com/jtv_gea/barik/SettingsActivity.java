@@ -3,6 +3,8 @@ package com.jtv_gea.barik;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
@@ -49,26 +51,35 @@ public class SettingsActivity extends BaseActivity {
 	public void onRadioButtonClicked(View view) {
 	    // Is the button now checked?
 	    boolean checked = ((RadioButton) view).isChecked();
+	    SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
 	    
 	    // Check which radio button was clicked
 	    switch(view.getId()) {
 	        case R.id.radio_euskera:
 	            if (checked){
+	            	
+	            	 prefs.edit().putString("locale", "eu_ES");
 	            	 Locale locale = new Locale("eu_ES");
 	            	 Locale.setDefault(locale);
 	            	 Configuration config = new Configuration();
 	            	 config.locale = locale;
-	            	 view.getContext().getResources().updateConfiguration(config, null);
+//	            	 view.getContext().getResources().updateConfiguration(config, null);
+	            	 getBaseContext().getResources().updateConfiguration(config, 
+	            		      getBaseContext().getResources().getDisplayMetrics());
 	            }
 	            	
 	            break;
 	        case R.id.radio_espaniol:
 	            if (checked){
+	            	
+	            	 prefs.edit().putString("locale", "es_ES");
 	            	 Locale locale = new Locale("es_ES");
 	            	 Locale.setDefault(locale);
 	            	 Configuration config = new Configuration();
 	            	 config.locale = locale;
-	            	 view.getContext().getResources().updateConfiguration(config, null);
+//	            	 view.getContext().getResources().updateConfiguration(config, null);
+	            	 getBaseContext().getResources().updateConfiguration(config, 
+	            		      getBaseContext().getResources().getDisplayMetrics());
 	            }
 	            	
 	            break;

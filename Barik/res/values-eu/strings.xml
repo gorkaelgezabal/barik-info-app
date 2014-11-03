@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Barik</string>
+    <string name="action_settings">Ezarpenak</string>
+    <string name="edit_email">Posta</string>
+    <string name="edit_password">Pasahitza</string>
+    <string name="button_login">Login</string>
+    <string name="title_activity_saldo_actual"></string>
+    <string name="text_saldo_barik">Saldo: </string>
+    <string name="text_fecha_actualizacion_barik">Eguneratze data: </string>
+    <string name="text_fecha_caducidad_barik">Iraungitze data: </string>
+    <string name="text_tipo_barik">Mota: </string>
+    <string name="text_numero_cliente_barik">Bezero zenbakia: </string>
+    <string name="text_situacion_barik">Egoera: </string>
+    <string name="text_numero_tarjeta_barik">Tarjeta zenbakia: </string>
+    <string name="text_user_pass_incorrectos">Erabiltzaile edo pasahitza okerra da.</string>
+    <string name="text_user_vacio">Erabiltzailea beharrezoa da</string>
+    <string name="text_pass_vacio">Pasahitza beharrezkoa da</string>
+    <string name="text_recargar">Eguneratu </string>
+    <string name="barik">Barik</string>
+    <string name="drawer_open">Ireki</string>
+    <string name="drawer_close">Itxi</string>
+    <string name="user">Erabiltzailea</string>
+    <string name="password">Pasahitza</string>
+
+    <string-array name="menu_array">
+        <item>Saldo</item>
+        <item>Idioma</item>
+        <item>Info</item>
+        <item>Salir</item>
+    </string-array>
+
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_preference">PreferenceActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+</resources>

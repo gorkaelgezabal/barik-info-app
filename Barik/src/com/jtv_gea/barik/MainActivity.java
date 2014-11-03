@@ -1,5 +1,7 @@
 package com.jtv_gea.barik;
 
+import java.util.Locale;
+
 import com.jtv_gea.barik.R;
 import com.jtv_gea.barik.modelo.BarikUser;
 import com.jtv_gea.barik.modelo.Persistencia;
@@ -9,7 +11,9 @@ import com.jtv_gea.barik.modelo.Persistencia;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -57,6 +61,8 @@ public class MainActivity extends ActionBarActivity {
 		String user = et_user.getText().toString();
 		String pass = et_pass.getText().toString();
 		
+		
+		
 		if(user.matches("")){
 			et_user.setError(getResources().getString(R.string.text_user_vacio));
 		}
@@ -71,6 +77,11 @@ public class MainActivity extends ActionBarActivity {
 			barikUser.setUsername(user);
 			barikUser.setPassword(pass);
 			db.saveUser(barikUser);
+			
+			//Se guarda el idioma
+			SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
+			Locale current = getResources().getConfiguration().locale;
+			prefs.edit().putString("locale", current.getLanguage());
 			
 			Intent saldoActivity = new Intent(this, SaldoActivity.class);
 			startActivity(saldoActivity);
