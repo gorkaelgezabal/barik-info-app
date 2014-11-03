@@ -33,9 +33,23 @@ public class BaseActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		//Idioma
+        SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
+        
+        String languageToLoad  = prefs.getString("locale", "nope");
+        Locale locale = new Locale(languageToLoad); 
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, 
+        getBaseContext().getResources().getDisplayMetrics());
 	}
 	
 	public void createNavigationDrawer(){
+
+		
+        
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		menuTitles = getResources().getStringArray(R.array.menu_array);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -73,22 +87,14 @@ public class BaseActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
         
-        SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
         
-        String languageToLoad  = prefs.getString("locale", "es_ES");
-        Locale locale = new Locale(languageToLoad); 
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, 
-        getBaseContext().getResources().getDisplayMetrics());
 	}
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 	    @Override
 	    public void onItemClick(AdapterView parent, View view, int position, long id) {
 	    	
 	    	Intent intent;
-	    	
+	    	mDrawerLayout.closeDrawer(mDrawerList);   
 	    	if(currentActivityIndex != position){
 	    		switch (position) {
 				case 0:
@@ -109,13 +115,14 @@ public class BaseActivity extends Activity {
 			        persistencia.saveUser(barikUser);
 			        
 			        intent = new Intent(view.getContext(), MainActivity.class);
+			        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//			        intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
 					view.getContext().startActivity(intent);
 				default:
 					break;
 				}
-	    	}
-	    	
-	        
+	    	}    	
+	    	     
 	        
 	    }
 	}

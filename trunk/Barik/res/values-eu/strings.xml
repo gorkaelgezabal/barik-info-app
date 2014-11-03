@@ -25,10 +25,10 @@
     <string name="password">Pasahitza</string>
 
     <string-array name="menu_array">
-        <item>Saldo</item>
-        <item>Idioma</item>
-        <item>Info</item>
-        <item>Salir</item>
+        <item>Saldoa</item>
+        <item>Hizkuntza</item>
+        <item>Informazioa</item>
+        <item>Irten</item>
     </string-array>
 
     <string name="title_activity_base">BaseActivity</string>
