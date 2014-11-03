@@ -1,10 +1,14 @@
 package com.jtv_gea.barik;
 
+import java.util.Locale;
+
 import com.jtv_gea.barik.modelo.BarikUser;
 import com.jtv_gea.barik.modelo.Persistencia;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -68,6 +72,16 @@ public class BaseActivity extends Activity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
+        
+        SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
+        
+        String languageToLoad  = prefs.getString("locale", "es_ES");
+        Locale locale = new Locale(languageToLoad); 
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, 
+        getBaseContext().getResources().getDisplayMetrics());
 	}
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 	    @Override
