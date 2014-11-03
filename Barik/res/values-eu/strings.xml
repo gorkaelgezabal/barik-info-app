@@ -7,7 +7,7 @@
     <string name="edit_password">Pasahitza</string>
     <string name="button_login">Login</string>
     <string name="title_activity_saldo_actual"></string>
-    <string name="text_saldo_barik">Saldo: </string>
+    <string name="text_saldo_barik">Saldoa: </string>
     <string name="text_fecha_actualizacion_barik">Eguneratze data: </string>
     <string name="text_fecha_caducidad_barik">Iraungitze data: </string>
     <string name="text_tipo_barik">Mota: </string>
@@ -19,10 +19,14 @@
     <string name="text_pass_vacio">Pasahitza beharrezkoa da</string>
     <string name="text_recargar">Eguneratu </string>
     <string name="barik">Barik</string>
+    <string name="information">Informazioa</string>
     <string name="drawer_open">Ireki</string>
     <string name="drawer_close">Itxi</string>
     <string name="user">Erabiltzailea</string>
     <string name="password">Pasahitza</string>
+    <string name="euskara">Euskera</string>
+    <string name="espaniol">Espaniera</string>
+    
 
     <string-array name="menu_array">
         <item>Saldoa</item>
@@ -34,5 +38,8 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_preference">PreferenceActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="infoActualizacion">Aplikazio honetan aurkezten den informazioa barik txartelaren web gunean oinarritzen da. Web gunean ondorengo hau adierazten da: </string>
+    <string name="infoWebBarik">«Aurkeztutako datu eta errealen artean desberdintasunak gerta daitezke, datuen eguneraketa ez baita berehalakoa. Azken egunetako bidaia eta errekargak falta daitezke.»
+</string>
 
 </resources>
