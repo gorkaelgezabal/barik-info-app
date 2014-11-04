@@ -34,7 +34,8 @@
         <item>Información</item>
         <item>Salir</item>
     </string-array>
-    <string name="title_activity_info">InfoActivity</string>
+    <string name="title_activity_saldo">Saldo</string>
+    <string name="title_activity_info">Información</string>
     <string name="title_activity_base">BaseActivity</string>
 
     <string name="infoActualizacion">La información mostrada en esta aplicacion depende de la propia pagina web de barik. Esta pagina avisa de lo siguiente: </string>
@@ -42,7 +43,7 @@
 </string>
 
     <string name="title_activity_preference">PreferenceActivity</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Idioma</string>
 
 
 </resources>
