@@ -42,7 +42,7 @@ public class JavaScriptInterface {
 		BarikUser user =persistencia.loadUser();
 		user.setSaldo(saldo);
 		user.setFechaUltimaActualizacion(new Date());
-		user.setCaducidad(caducidad);
+		user.setCaducidad(caducidad.substring(0, 10)); //no mostrar la hora
 		user.setnCliente(nCliente);
 		user.setSituacion(situacion);
 		user.setTipo(tipo);
