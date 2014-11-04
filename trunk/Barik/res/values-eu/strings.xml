@@ -35,9 +35,11 @@
         <item>Irten</item>
     </string-array>
 
+    <string name="title_activity_saldo">Saldoa</string>
+    <string name="title_activity_info">Informazioa</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_preference">PreferenceActivity</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Hizkuntza</string>
     <string name="infoActualizacion">Aplikazio honetan aurkezten den informazioa barik txartelaren web gunean oinarritzen da. Web gunean ondorengo hau adierazten da: </string>
     <string name="infoWebBarik">«Aurkeztutako datu eta errealen artean desberdintasunak gerta daitezke, datuen eguneraketa ez baita berehalakoa. Azken egunetako bidaia eta errekargak falta daitezke.»
 </string>
