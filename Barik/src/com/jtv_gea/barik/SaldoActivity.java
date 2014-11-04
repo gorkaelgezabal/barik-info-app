@@ -87,6 +87,8 @@ public class SaldoActivity extends BaseActivity {
         TextView numTarjetaText= (TextView) this.findViewById(R.id.resultado_numero_tarjeta_barik);
         numTarjetaText.setText(user.getnTarjeta());
         
+        getActionBar().setTitle(R.string.title_activity_saldo);
+        
       //actualizar el saldo
       	this.getSaldo();
         
