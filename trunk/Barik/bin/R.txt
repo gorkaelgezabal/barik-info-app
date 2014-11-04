@@ -401,8 +401,8 @@ int string edit_password 0x7f0a0010
 int string espaniol 0x7f0a0026
 int string euskara 0x7f0a0025
 int string hello_world 0x7f0a0012
-int string infoActualizacion 0x7f0a0029
-int string infoWebBarik 0x7f0a002a
+int string infoActualizacion 0x7f0a002a
+int string infoWebBarik 0x7f0a002b
 int string information 0x7f0a0021
 int string password 0x7f0a0024
 int string text_fecha_actualizacion_barik 0x7f0a0015
@@ -416,11 +416,12 @@ int string text_situacion_barik 0x7f0a0019
 int string text_tipo_barik 0x7f0a0017
 int string text_user_pass_incorrectos 0x7f0a001b
 int string text_user_vacio 0x7f0a001c
-int string title_activity_base 0x7f0a0028
-int string title_activity_info 0x7f0a0027
-int string title_activity_preference 0x7f0a002b
+int string title_activity_base 0x7f0a0029
+int string title_activity_info 0x7f0a0028
+int string title_activity_preference 0x7f0a002c
+int string title_activity_saldo 0x7f0a0027
 int string title_activity_saldo_actual 0x7f0a0013
-int string title_activity_settings 0x7f0a002c
+int string title_activity_settings 0x7f0a002d
 int string user 0x7f0a0023
 int style AppBaseTheme 0x7f0b008b
 int style AppTheme 0x7f0b008c

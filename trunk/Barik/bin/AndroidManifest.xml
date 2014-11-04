@@ -29,7 +29,6 @@
         <activity
             android:name=".SaldoActivity"
             android:label="@string/title_activity_saldo_actual"
-            android:noHistory="true"
             android:screenOrientation="portrait" >
         </activity>
         <activity

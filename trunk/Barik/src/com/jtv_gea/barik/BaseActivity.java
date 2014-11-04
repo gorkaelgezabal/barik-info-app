@@ -57,31 +57,9 @@ public class BaseActivity extends Activity {
 	
 	public void createNavigationDrawer(){
 
-		
-        
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		menuTitles = getResources().getStringArray(R.array.menu_array);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
-		
-//		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-//                R.layout.drawer_list_item,R.id.list_item, menuTitles){
-//			
-//			
-//			@Override
-//	        public View getView(int position, View convertView, ViewGroup parent) {
-//				LayoutInflater inflater = (LayoutInflater) convertView.getContext()
-//			            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//			    View rowView = inflater.inflate(R.layout.drawer_list_item,
-//			            parent, false);
-//
-//			    TextView text1 = (TextView)rowView.findViewById(R.id.list_item);
-//			    text1.setText(menuTitles[position]);
-//
-//			    return rowView;
-//	        }
-//			
-//			
-//		});
 		
 		 List<DrawerItem> rowItems = new ArrayList<DrawerItem>();
         for (int i = 0; i < menuTitles.length; i++) {
