@@ -1,9 +1,8 @@
 package com.jtv_gea.barik;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
-
-import com.jtv_gea.barik.modelo.BarikUser;
-import com.jtv_gea.barik.modelo.Persistencia;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,12 +12,19 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.jtv_gea.barik.modelo.BarikUser;
+import com.jtv_gea.barik.modelo.DrawerItem;
+import com.jtv_gea.barik.modelo.Persistencia;
 
 public class BaseActivity extends Activity {
 
@@ -29,6 +35,9 @@ public class BaseActivity extends Activity {
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	private Integer currentActivityIndex;
+	
+	public static final Integer[] images = { R.drawable.ic_credit_card_white_48dp,
+        R.drawable.ic_language_white_48dp, R.drawable.ic_help_white_48dp, R.drawable.ic_exit_to_app_white_48dp };
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +63,35 @@ public class BaseActivity extends Activity {
 		menuTitles = getResources().getStringArray(R.array.menu_array);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		
-		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, menuTitles));
+//		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+//                R.layout.drawer_list_item,R.id.list_item, menuTitles){
+//			
+//			
+//			@Override
+//	        public View getView(int position, View convertView, ViewGroup parent) {
+//				LayoutInflater inflater = (LayoutInflater) convertView.getContext()
+//			            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//			    View rowView = inflater.inflate(R.layout.drawer_list_item,
+//			            parent, false);
+//
+//			    TextView text1 = (TextView)rowView.findViewById(R.id.list_item);
+//			    text1.setText(menuTitles[position]);
+//
+//			    return rowView;
+//	        }
+//			
+//			
+//		});
 		
+		 List<DrawerItem> rowItems = new ArrayList<DrawerItem>();
+        for (int i = 0; i < menuTitles.length; i++) {
+        	DrawerItem item = new DrawerItem( images[i], menuTitles[i]);
+            rowItems.add(item);
+        }
+		CustomListViewAdapter adapter = new CustomListViewAdapter(this,
+                R.layout.drawer_list_item, rowItems);
+		
+		mDrawerList.setAdapter(adapter);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 		
 		mDrawerToggle = new ActionBarDrawerToggle(
