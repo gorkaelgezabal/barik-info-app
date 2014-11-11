@@ -40,7 +40,7 @@ public class JavaScriptInterface {
 		Log.i(this.getClass().toString(), "informacion recogida, guardando en fichero...");
 		Persistencia persistencia= new Persistencia(saldoActivity.getApplicationContext());
 		BarikUser user =persistencia.loadUser();
-		user.setSaldo(saldo);
+		user.setSaldo(saldo + '€');
 		user.setFechaUltimaActualizacion(new Date());
 		user.setCaducidad(caducidad.substring(0, 10)); //no mostrar la hora
 		user.setnCliente(nCliente);
