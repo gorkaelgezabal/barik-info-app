@@ -14,16 +14,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CustomListViewAdapter extends ArrayAdapter<DrawerItem> {
-
 	Context context;
 	 
-    public CustomListViewAdapter(Context context, int resourceId,
-            List<DrawerItem> items) {
+    public CustomListViewAdapter(Context context, int resourceId, List<DrawerItem> items) {
         super(context, resourceId, items);
         this.context = context;
     }
     
-    /*private view holder class*/
     private class ViewHolder {
         ImageView imageView;
         TextView txtTitle;

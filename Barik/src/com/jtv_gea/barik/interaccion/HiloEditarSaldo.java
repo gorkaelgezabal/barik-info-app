@@ -19,7 +19,6 @@ public class HiloEditarSaldo implements Runnable{
 
 	@Override
 	public void run() {
-
         //editar textos
 		TextView saldoText= (TextView) this.saldoActivity.findViewById(R.id.resultado_saldo_barik);
         saldoText.setText(usuario.getSaldo());
@@ -36,12 +35,10 @@ public class HiloEditarSaldo implements Runnable{
         TextView numTarjetaText= (TextView) this.saldoActivity.findViewById(R.id.resultado_numero_tarjeta_barik);
         numTarjetaText.setText(usuario.getnTarjeta());
         
-        
         Handler mHandler = new Handler();
         
         //actualizar progress bar
         Log.i(this.getClass().getName(), "informacion recogida, actualizando la pagina");
 		mHandler.post(new ProgressBarController(this.saldoActivity, 0));
-		
 	}
 }

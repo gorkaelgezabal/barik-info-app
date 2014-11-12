@@ -12,15 +12,11 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.jtv_gea.barik.modelo.BarikUser;
 import com.jtv_gea.barik.modelo.DrawerItem;
@@ -32,10 +28,9 @@ public class BaseActivity extends Activity {
 	private String[] menuTitles;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
-	private CharSequence mDrawerTitle;
-	private CharSequence mTitle;
 	private Integer currentActivityIndex;
 	
+	/*Iconos del navigation drawer*/
 	public static final Integer[] images = { R.drawable.ic_credit_card_white_48dp,
         R.drawable.ic_language_white_48dp, R.drawable.ic_help_white_48dp, R.drawable.ic_exit_to_app_white_48dp };
 	
@@ -80,28 +75,20 @@ public class BaseActivity extends Activity {
                 R.string.drawer_close  
                 ) {
 
-//             Called when a drawer has settled in a completely closed state. 
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                //getActionBar().setTitle(mTitle);
             }
 
-//             Called when a drawer has settled in a completely open state. 
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                //getActionBar().setTitle(mDrawerTitle);
             }
         };
-        
-        
 
-        // Set the drawer toggle as the DrawerListener
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-        
-        
 	}
+	
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 	    @Override
 	    public void onItemClick(AdapterView parent, View view, int position, long id) {
@@ -110,40 +97,39 @@ public class BaseActivity extends Activity {
 	    	mDrawerLayout.closeDrawer(mDrawerList);   
 	    	if(currentActivityIndex != position){
 	    		switch (position) {
-				case 0:
+				case 0:/*saldo*/
 					intent = new Intent(view.getContext(), SaldoActivity.class);
 					view.getContext().startActivity(intent);
 					break;
-				case 1:
+				case 1:/*Idioma*/
 					intent = new Intent(view.getContext(), SettingsActivity.class);
 					view.getContext().startActivity(intent);
 					break;
-				case 2:
+				case 2:/*Informacion*/
 					intent = new Intent(view.getContext(), InfoActivity.class);
 					view.getContext().startActivity(intent);
 					break;
-				case 3:
+				case 3:/*Salir*/
+					
+					/*Primero se borra el usuario*/
 					Persistencia persistencia = new Persistencia(view.getContext());
 			        BarikUser barikUser = new BarikUser("", "");
 			        persistencia.saveUser(barikUser);
 			        
+			        /*Se borra el historial de navegacion, y se manda a la pantalla de login*/
 			        intent = new Intent(view.getContext(), MainActivity.class);
 			        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//			        intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
 					view.getContext().startActivity(intent);
 				default:
 					break;
 				}
 	    	}    	
-	    	     
-	        
 	    }
 	}
 	
 	@Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
     }
  
@@ -155,27 +141,20 @@ public class BaseActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.base, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
 		}
 		
-		// Pass the event to ActionBarDrawerToggle, if it returns
-        // true, then it has handled the app icon touch event
         if (mDrawerToggle.onOptionsItemSelected(item)) {
           return true;
         }
-        // Handle your other action bar items...
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -186,6 +165,4 @@ public class BaseActivity extends Activity {
 	public void setCurrentActivityIndex(Integer currentActivityIndex) {
 		this.currentActivityIndex = currentActivityIndex;
 	}
-	
-	
 }
