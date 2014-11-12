@@ -1,7 +1,6 @@
 package com.jtv_gea.barik;
 
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 public class ProgressBarController implements Runnable{
 	private SaldoActivity saldoActivity;
@@ -10,6 +9,7 @@ public class ProgressBarController implements Runnable{
 	private static final int MINVALUE=00;
 	
 	public ProgressBarController(SaldoActivity activity, int progress){
+		
 		this.saldoActivity = activity;
 		if(progress<MINVALUE){
 			progress=MINVALUE;
@@ -28,7 +28,5 @@ public class ProgressBarController implements Runnable{
 		if(this.progress==MAXVALUE){
 			//cambiar el texto o hacer lo que sea
 		}
-		
 	}
-
 }

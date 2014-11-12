@@ -6,9 +6,6 @@ import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
-import android.widget.ImageView;
-
-
 
 import com.jtv_gea.barik.MainActivity;
 import com.jtv_gea.barik.ProgressBarController;
@@ -16,6 +13,12 @@ import com.jtv_gea.barik.R;
 import com.jtv_gea.barik.SaldoActivity;
 import com.jtv_gea.barik.modelo.BarikUser;
 import com.jtv_gea.barik.modelo.Persistencia;
+
+/** En esta clase se implementa toda la interaccion que se haria de forma manual en la web.
+ * En primer lugar se accede a la pagina de login. Ya en esta pagina se recogen el usuario y el password proporcionados por el usuario
+ * y se injectan en el formulario de login mediante Javascript. Dependiendo de la pagina a la que se nos redirige, se comprueba si 
+ * el usuario y el password son correctos o no. En el caso de que sean correctos, se hace click en la pestaña de saldo, se recoge la informacion
+ * y por ultima se pasa la informacion recogida la interfaz Javascript la cual es la que se encarga de guardar los datos en persistencia */
 
 public class InteraccionWeb extends WebViewClient {
 	private static final String URL_PASO0 = "https://barikweb.cotrabi.com/sagb/faces/Login.jspx"; // equals
@@ -75,7 +78,7 @@ public class InteraccionWeb extends WebViewClient {
 				Toast.makeText(view.getContext(),view.getContext().getResources().getString(R.string.text_user_pass_incorrectos),
 						   Toast.LENGTH_LONG).show();
 				
-				//Se abre la pantalla principal
+				//Se abre la pantalla de login
 				Intent intent = new Intent(view.getContext(), MainActivity.class);
 				view.getContext().startActivity(intent);
 				
@@ -109,15 +112,12 @@ public class InteraccionWeb extends WebViewClient {
 			Handler mHandler = new Handler();
 			mHandler.post(new ProgressBarController((SaldoActivity) view
 					.getContext(), 77));
-
 		}
-
 	}
 
 	@Override
 	public void onLoadResource(WebView view, String url) {
-		if (url.equals("https://barikweb.cotrabi.com/sagb/afr/info.png")) {
-			
+		if (url.contains(URL_PASO3+PARAM_1)) {
 			view.loadUrl(JAVASCRIPT_DATOSUSUARIO);
 		}
 

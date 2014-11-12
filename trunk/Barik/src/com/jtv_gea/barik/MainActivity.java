@@ -22,15 +22,17 @@ import android.view.Window;
 import android.widget.EditText;
 
 public class MainActivity extends ActionBarActivity {
-
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		Persistencia persistencia= new Persistencia(this.getApplicationContext());
 		BarikUser user =persistencia.loadUser();
+		
+		//Se comprueba si el usuario se a logeado anteriormente.
+		//Si es asi se abre directamente la pantalla de saldo.
 		if (!user.getUsername().equals("")){
 			Intent saldoActivity = new Intent(this, SaldoActivity.class);
 			startActivity(saldoActivity);
@@ -39,30 +41,26 @@ public class MainActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
+		
 		return super.onOptionsItemSelected(item);
 	}
 	
-	
-	
 	public void login(View view){
+		
 		EditText et_user = (EditText)findViewById(R.id.et_user);
 		EditText et_pass = (EditText)findViewById(R.id.et_pass);
 		
 		String user = et_user.getText().toString();
 		String pass = et_pass.getText().toString();
 		
-		
-		
+		//Validaciones usuario y password
 		if(user.matches("")){
 			et_user.setError(getResources().getString(R.string.text_user_vacio));
 		}
@@ -72,6 +70,7 @@ public class MainActivity extends ActionBarActivity {
 		}
 		
 		if(!user.matches("") && !pass.matches("")){
+			//Se guarda el usuario
 			Persistencia db = new Persistencia(this);
 			BarikUser barikUser = new BarikUser();
 			barikUser.setUsername(user);
@@ -91,6 +90,5 @@ public class MainActivity extends ActionBarActivity {
 			startActivity(saldoActivity);
 
 		}
-		
 	}
 }

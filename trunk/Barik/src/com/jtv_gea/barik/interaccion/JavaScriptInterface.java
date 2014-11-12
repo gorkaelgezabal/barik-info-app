@@ -11,7 +11,7 @@ import com.jtv_gea.barik.modelo.BarikUser;
 import com.jtv_gea.barik.modelo.Persistencia;
 
 /**
- * Clase a la que se llama desde javascript para actualizar el saldo
+ * Clase a la que se llama desde javascript que se encarga de guardar los datos
  *
  */
 public class JavaScriptInterface {
@@ -35,7 +35,6 @@ public class JavaScriptInterface {
     {
 		Log.i(this.getClass().getName(), "Saldo: "+saldo);
 		
-		
 		//Guardar en fichero el nuevo dato
 		Log.i(this.getClass().toString(), "informacion recogida, guardando en fichero...");
 		Persistencia persistencia= new Persistencia(saldoActivity.getApplicationContext());
@@ -52,6 +51,5 @@ public class JavaScriptInterface {
 		
 		//Editar el saldo en la pantalla
 		mHandler.post(new HiloEditarSaldo(user, this.saldoActivity));
-		
     }
 }

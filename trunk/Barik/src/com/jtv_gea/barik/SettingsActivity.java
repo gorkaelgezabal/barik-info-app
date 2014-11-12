@@ -19,7 +19,6 @@ public class SettingsActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
-		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 		
@@ -31,6 +30,7 @@ public class SettingsActivity extends BaseActivity {
 		SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
 		String locale = prefs.getString("locale", "nope");
 		RadioButton rb;
+		
 		if (locale.equals("es_ES")){
 			 rb = (RadioButton) findViewById(R.id.radio_espaniol);
 			
@@ -42,16 +42,12 @@ public class SettingsActivity extends BaseActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.settings, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
@@ -61,12 +57,11 @@ public class SettingsActivity extends BaseActivity {
 	}
 	
 	public void onRadioButtonClicked(View view) {
-	    // Is the button now checked?
 	    boolean checked = ((RadioButton) view).isChecked();
 	    SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
 	    Locale locale = new Locale("es_ES");
 	    SharedPreferences.Editor editor= prefs.edit();
-	    // Check which radio button was clicked
+	    
 	    switch(view.getId()) {
 	        case R.id.radio_euskera:
 	            if (checked){
@@ -88,7 +83,6 @@ public class SettingsActivity extends BaseActivity {
 		 Locale.setDefault(locale);
 		 Configuration config = new Configuration();
 		 config.locale = locale;
-	//	 view.getContext().getResources().updateConfiguration(config, null);
 		 getBaseContext().getResources().updateConfiguration(config, 
 			      getBaseContext().getResources().getDisplayMetrics());
 		 
