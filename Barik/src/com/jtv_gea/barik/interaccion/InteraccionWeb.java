@@ -30,6 +30,7 @@ public class InteraccionWeb extends WebViewClient {
 	private static final String PARAM_2 = "_afrWindowMode";
 	private static final String PARAM_3 = "_afrLoop";
 
+	boolean entrar = false;
 	//codigo javascript
 	private static final String JAVASCRIPT_TABSALDO = "javascript: (function(){ "
 			+ "document.getElementById('pt1:j_id_id14:1:j_id_id23').click(); "
@@ -37,19 +38,21 @@ public class InteraccionWeb extends WebViewClient {
 	
 	//private static final String JAVASCRIPT_DATOSUSUARIO = "javascript: (function(){try{window.HTMLOUT.processHTML(document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML);}catch (e) {}})();";
 	
-	private static final String JAVASCRIPT_DATOSUSUARIO = "javascript: ("
-			+ "function(){"
-			+ "try{"
-			+ "var saldo =document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML;"
-			+ "var caducidad = document.getElementById('pt1:j_id_id36:subform:j_id_id8pc2::content').innerHTML;"
-			+ "var nCliente = document.getElementById('pt1:j_id_id36:subform:j_id_id10pc2::content').innerHTML;"
-			+ "var situacion = document.getElementById('pt1:j_id_id36:subform:j_id_id12pc2::content').innerHTML;"
-			+ "var tipo = document.getElementById('pt1:j_id_id36:subform:j_id_id9pc2::content').innerHTML;"
-			+ "var nTarjeta = document.getElementById('pt1:j_id_id36:subform:j_id_id6pc2::content').innerHTML;"
-			+ "window.HTMLOUT.processHTML(saldo, caducidad, nCliente, situacion, tipo, nTarjeta);"
-			+ "}catch (e) {}"
-			+ "}"
-			+ ")();";
+//	private static final String JAVASCRIPT_DATOSUSUARIO = "javascript: ("
+//			+ "function(){"
+//			+ "try{"
+//			+ "var saldo =document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML;"
+//			+ "var caducidad = document.getElementById('pt1:j_id_id36:subform:j_id_id8pc2::content').innerHTML;"
+//			+ "var nCliente = document.getElementById('pt1:j_id_id36:subform:j_id_id10pc2::content').innerHTML;"
+//			+ "var situacion = document.getElementById('pt1:j_id_id36:subform:j_id_id12pc2::content').innerHTML;"
+//			+ "var tipo = document.getElementById('pt1:j_id_id36:subform:j_id_id9pc2::content').innerHTML;"
+//			+ "var nTarjeta = document.getElementById('pt1:j_id_id36:subform:j_id_id6pc2::content').innerHTML;"
+//			+ "window.HTMLOUT.processHTML(saldo, caducidad, nCliente, situacion, tipo, nTarjeta);"
+//			+ "}catch (e) {}"
+//			+ "}"
+//			+ ")();";
+	
+	private static final String JAVASCRIPT_DATOSUSUARIO ="javascript: (function(){var getInfo = function(cont){try{var saldo =document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML;var caducidad = document.getElementById('pt1:j_id_id36:subform:j_id_id8pc2::content').innerHTML;var nCliente = document.getElementById('pt1:j_id_id36:subform:j_id_id10pc2::content').innerHTML;var situacion = document.getElementById('pt1:j_id_id36:subform:j_id_id12pc2::content').innerHTML;var tipo = document.getElementById('pt1:j_id_id36:subform:j_id_id9pc2::content').innerHTML;var nTarjeta = document.getElementById('pt1:j_id_id36:subform:j_id_id6pc2::content').innerHTML;window.HTMLOUT.processHTML(saldo, caducidad, nCliente, situacion, tipo, nTarjeta);}catch (e) {if(cont < 3){setTimeout(function(){getInfo(cont+1)}, 3000);console.log('entra'+cont)}}};getInfo(0);}());";
 	
 
 	@Override
@@ -107,6 +110,7 @@ public class InteraccionWeb extends WebViewClient {
 					.getContext(), 60));
 		} else if (url.contains(URL_PASO3)) {
 			Log.i(this.getClass().getName(), "abriendo tab de saldo");
+			entrar = true;
 			// abrir la pestaña del saldo
 			view.loadUrl(JAVASCRIPT_TABSALDO);
 			Handler mHandler = new Handler();
@@ -117,9 +121,13 @@ public class InteraccionWeb extends WebViewClient {
 
 	@Override
 	public void onLoadResource(WebView view, String url) {
-		if (url.contains(URL_PASO3+PARAM_1)) {
-			view.loadUrl(JAVASCRIPT_DATOSUSUARIO);
+		if(entrar){
+			if (url.equals("https://barikweb.cotrabi.com/favicon.ico")) {
+				Log.i(this.getClass().getName(), "entrando datos");
+				view.loadUrl(JAVASCRIPT_DATOSUSUARIO);
+			}
 		}
+		
 
 	}
 	
