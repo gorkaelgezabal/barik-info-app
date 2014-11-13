@@ -53,7 +53,7 @@ public class InteraccionWeb extends WebViewClient {
 						+"if(cont < 250){"
 							+"setTimeout(function(){getInfo(cont+1)}, 100);"
 							+"console.log('entra'+cont)"
-							+"}"
+							+"}else{window.HTMLOUT.processHTML(null, null, null, null, null, null);}"
 							+"}"
 							+"};"
 				+"getInfo(0);"
