@@ -36,23 +36,31 @@ public class InteraccionWeb extends WebViewClient {
 			+ "document.getElementById('pt1:j_id_id14:1:j_id_id23').click(); "
 			+ "})();";
 	
-	//private static final String JAVASCRIPT_DATOSUSUARIO = "javascript: (function(){try{window.HTMLOUT.processHTML(document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML);}catch (e) {}})();";
+	/*Javascript que recoge los valores. Puede pasar  que los datos no esten listos. En ese caso se vuelve a lanzar el script despues de un tiempo
+	 * varias veces hasta que se encuentran los valores o se llega al limite de intentos.*/
+	private static final String JAVASCRIPT_DATOSUSUARIO = "javascript: ("
+			+"function(){"
+			+"var getInfo = function(cont){"
+					+"try{"
+						+"var saldo =document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML;"
+						+"var caducidad = document.getElementById('pt1:j_id_id36:subform:j_id_id8pc2::content').innerHTML;"
+						+"var nCliente = document.getElementById('pt1:j_id_id36:subform:j_id_id10pc2::content').innerHTML;"
+						+"var situacion = document.getElementById('pt1:j_id_id36:subform:j_id_id12pc2::content').innerHTML;"
+						+"var tipo = document.getElementById('pt1:j_id_id36:subform:j_id_id9pc2::content').innerHTML;"
+						+"var nTarjeta = document.getElementById('pt1:j_id_id36:subform:j_id_id6pc2::content').innerHTML;"
+						+"window.HTMLOUT.processHTML(saldo, caducidad, nCliente, situacion, tipo, nTarjeta);"
+						+"}catch (e) {"
+						+"if(cont < 250){"
+							+"setTimeout(function(){getInfo(cont+1)}, 100);"
+							+"console.log('entra'+cont)"
+							+"}"
+							+"}"
+							+"};"
+				+"getInfo(0);"
+				+"}"
+		+"());";
 	
-//	private static final String JAVASCRIPT_DATOSUSUARIO = "javascript: ("
-//			+ "function(){"
-//			+ "try{"
-//			+ "var saldo =document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML;"
-//			+ "var caducidad = document.getElementById('pt1:j_id_id36:subform:j_id_id8pc2::content').innerHTML;"
-//			+ "var nCliente = document.getElementById('pt1:j_id_id36:subform:j_id_id10pc2::content').innerHTML;"
-//			+ "var situacion = document.getElementById('pt1:j_id_id36:subform:j_id_id12pc2::content').innerHTML;"
-//			+ "var tipo = document.getElementById('pt1:j_id_id36:subform:j_id_id9pc2::content').innerHTML;"
-//			+ "var nTarjeta = document.getElementById('pt1:j_id_id36:subform:j_id_id6pc2::content').innerHTML;"
-//			+ "window.HTMLOUT.processHTML(saldo, caducidad, nCliente, situacion, tipo, nTarjeta);"
-//			+ "}catch (e) {}"
-//			+ "}"
-//			+ ")();";
-	
-	private static final String JAVASCRIPT_DATOSUSUARIO ="javascript: (function(){var getInfo = function(cont){try{var saldo =document.getElementById('pt1:j_id_id36:subform:j_id_id23pc2::db').getElementsByClassName('xxf')[1].getElementsByTagName('nobr')[0].innerHTML;var caducidad = document.getElementById('pt1:j_id_id36:subform:j_id_id8pc2::content').innerHTML;var nCliente = document.getElementById('pt1:j_id_id36:subform:j_id_id10pc2::content').innerHTML;var situacion = document.getElementById('pt1:j_id_id36:subform:j_id_id12pc2::content').innerHTML;var tipo = document.getElementById('pt1:j_id_id36:subform:j_id_id9pc2::content').innerHTML;var nTarjeta = document.getElementById('pt1:j_id_id36:subform:j_id_id6pc2::content').innerHTML;window.HTMLOUT.processHTML(saldo, caducidad, nCliente, situacion, tipo, nTarjeta);}catch (e) {if(cont < 3){setTimeout(function(){getInfo(cont+1)}, 3000);console.log('entra'+cont)}}};getInfo(0);}());";
+
 	
 
 	@Override

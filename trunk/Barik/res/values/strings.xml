@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Barik</string>
+    <string name="app_name">InfoBarik</string>
     <string name="action_settings">Settings</string>
     <string name="edit_email">Email</string>
     <string name="edit_password">Password</string>
