@@ -91,10 +91,18 @@
 		        android:textAppearance="?android:attr/textAppearanceLarge"
 		        android:textSize="18sp" />
 		    
-		    <View
-		        android:layout_marginTop="29dp"
-		        android:id="@+id/separator"
+		    <TextView
+		        android:id="@+id/labInfo"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="40dp"
 		        android:layout_below="@+id/resultado_fecha_actualizacion_barik"
+		        android:text="Informacion adicional"
+		        android:textAppearance="?android:attr/textAppearanceSmall" />
+		    
+		    <View
+		        android:id="@+id/separator"
+		        android:layout_below="@+id/labInfo"
 			    android:layout_width="fill_parent"
 			    android:layout_height="1dp"
 			    android:background="@android:color/darker_gray"/>
@@ -219,6 +227,8 @@
 		        android:text="@string/text_numero_tarjeta_barik"
 		        android:textAppearance="?android:attr/textAppearanceLarge"
 		        android:textSize="18sp" />
+
+		    
 		
 		</RelativeLayout>
 	</FrameLayout>

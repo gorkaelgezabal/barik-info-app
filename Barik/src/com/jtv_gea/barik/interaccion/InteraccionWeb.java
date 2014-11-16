@@ -3,6 +3,9 @@ package com.jtv_gea.barik.interaccion;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -31,10 +34,38 @@ public class InteraccionWeb extends WebViewClient {
 	private static final String PARAM_3 = "_afrLoop";
 
 	boolean entrar = false;
-	//codigo javascript
-	private static final String JAVASCRIPT_TABSALDO = "javascript: (function(){ "
-			+ "document.getElementById('pt1:j_id_id14:1:j_id_id23').click(); "
-			+ "})();";
+	///codigo javascript
+//	private static final String JAVASCRIPT_TABSALDO = "javascript: (function(){ "
+//	+ "document.getElementById('pt1:j_id_id14:1:j_id_id23').click(); "
+//	+ "})();";
+
+	/*Dependiendo de cada navegador puede que la funcion click() no este implementetada. En esos casos hay que crearlo manualmente.*/
+private static final String JAVASCRIPT_TABSALDO = "javascript: ("
+	+"function(){"
+	+"var clickTab = function(cont){"
+			+"try{"
+			+"element=document.getElementById('pt1:j_id_id14:1:j_id_id23');"
+			+"if(element.click)"
+			+"    element.click();"
+			+" else if(document.createEvent)"
+		    +"{"
+		    +"    var eventObj = document.createEvent('MouseEvents');"
+		    +"    eventObj.initEvent('click',true,true);"
+		    +"    element.dispatchEvent(eventObj);"
+		    +"}"
+				+"}catch (e) {"
+				+"if(cont < 6){"
+					+"console.log(e.message);"
+					
+					+"setTimeout(function(){clickTab(cont+1)}, 100);"
+					+"console.log('entra'+cont);"
+					+"}"
+					+"}"
+					+"};"
+		+"clickTab(0);"
+		+"}"
++"());";
+
 	
 	/*Javascript que recoge los valores. Puede pasar  que los datos no esten listos. En ese caso se vuelve a lanzar el script despues de un tiempo
 	 * varias veces hasta que se encuentran los valores o se llega al limite de intentos.*/
@@ -70,6 +101,9 @@ public class InteraccionWeb extends WebViewClient {
 			Handler mHandler = new Handler();
 			mHandler.post(new ProgressBarController((SaldoActivity) view
 					.getContext(), 15));
+			
+			
+			
 		} else if (url.contains(URL_PASO1)) {// Login
 			Log.i(this.getClass().getName(), "pagina de login...");
 			boolean loginError;
@@ -130,7 +164,8 @@ public class InteraccionWeb extends WebViewClient {
 	@Override
 	public void onLoadResource(WebView view, String url) {
 		if(entrar){
-			if (url.equals("https://barikweb.cotrabi.com/favicon.ico")) {
+			//if (url.equals("https://barikweb.cotrabi.com/favicon.ico")) {
+			if (url.contains(this.URL_PASO3+this.PARAM_1)) {
 				Log.i(this.getClass().getName(), "entrando datos");
 				view.loadUrl(JAVASCRIPT_DATOSUSUARIO);
 			}

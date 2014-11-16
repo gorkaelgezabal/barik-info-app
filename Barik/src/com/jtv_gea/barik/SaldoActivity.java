@@ -14,10 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,7 +36,8 @@ public class SaldoActivity extends BaseActivity {
 		
 		final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
 		progressBar.setId(R.id.progressBar);
-		progressBar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 24));
+//		progressBar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 24));
+		progressBar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 34));
 
 		final FrameLayout decorView = (FrameLayout) getWindow().getDecorView();
 		decorView.addView(progressBar);

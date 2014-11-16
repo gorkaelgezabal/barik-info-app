@@ -45,6 +45,7 @@
     <string name="title_activity_preference">PreferenceActivity</string>
     <string name="title_activity_settings">Idioma</string>
     <string name="error_saldo">No se ha podido obtener el saldo</string>
+    <string name="info_adic">Información adicional</string>
 
 
 </resources>
