@@ -35,6 +35,7 @@ public class InteraccionWeb extends WebViewClient {
 
 	boolean entrar = false;
 	///codigo javascript
+	/*Dependiendo de cada navegador puede que la funcion click() no este implementetada. En esos casos hay que crearlo manualmente.*/
 	private static final String JAVASCRIPT_TABSALDO = "javascript: (function(){ "
 			+"element=document.getElementById('pt1:j_id_id14:1:j_id_id23');"
 			+"console.log('entra funcion click');"
@@ -48,37 +49,6 @@ public class InteraccionWeb extends WebViewClient {
 		    +"    eventObj.initEvent('click',true,true);"
 		    +"    element.dispatchEvent(eventObj);}"
 	+ "})();";
-
-	/*Dependiendo de cada navegador puede que la funcion click() no este implementetada. En esos casos hay que crearlo manualmente.*/
-//private static final String JAVASCRIPT_TABSALDO = "javascript: ("
-//	+"function(){"
-//	+"var clickTab = function(cont){"
-//			+"try{"
-//			//+ "document.getElementById('pt1:j_id_id14:1:j_id_id23').click(); "
-//			+"element=document.getElementById('pt1:j_id_id14:1:j_id_id23');"
-//			+"console.log('entra funcion click');"
-//			+"if(element.click){"
-//			+"    element.click();"
-//			+"    console.log('click');}"
-//			+" else if(document.createEvent)"
-//		    +"{"
-//		    +"    var eventObj = document.createEvent('MouseEvents');"
-//		    +"    console.log('crear evento');"
-//		    +"    eventObj.initEvent('click',true,true);"
-//		    +"    element.dispatchEvent(eventObj);"
-//		    +"}"
-//				+"}catch (e) {"
-//				+"if(cont < 6){"
-//					+"console.log(e.message);"
-//					
-//					+"setTimeout(function(){clickTab(cont+1)}, 100);"
-//					+"console.log('catch de click'+cont);"
-//					+"}"
-//					+"}"
-//					+"};"
-//		+"clickTab(0);"
-//		+"}"
-//+"());";
 
 	
 	/*Javascript que recoge los valores. Puede pasar  que los datos no esten listos. En ese caso se vuelve a lanzar el script despues de un tiempo
