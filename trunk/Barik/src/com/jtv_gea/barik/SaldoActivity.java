@@ -132,4 +132,10 @@ public class SaldoActivity extends BaseActivity {
 		browser.setWebViewClient(new InteraccionWeb());
 		browser.loadUrl(LOGIN_PAGE);
 	}
+	@Override
+	protected void onPause() {
+		super.onPause();
+		WebView browser = (WebView)findViewById(R.id.browser);
+		browser.destroy();
+	}
 }
