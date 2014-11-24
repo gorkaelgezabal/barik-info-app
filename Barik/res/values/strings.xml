@@ -46,6 +46,11 @@
     <string name="title_activity_settings">Idioma</string>
     <string name="error_saldo">No se ha podido obtener el saldo</string>
     <string name="info_adic">Información adicional</string>
+    
+    <string name="activa">Activa</string>
+    <string name="inactiva">Inactiva</string>
+    <string name="personalizada">Personalizada</string>
+    
 
 
 </resources>

@@ -39,15 +39,15 @@ public class BaseActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		//Idioma
-        SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
-        
-        String languageToLoad  = prefs.getString("locale", "nope");
-        Locale locale = new Locale(languageToLoad); 
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, 
-        getBaseContext().getResources().getDisplayMetrics());
+//        SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
+//        
+//        String languageToLoad  = prefs.getString("locale", "nope");
+//        Locale locale = new Locale(languageToLoad); 
+//        Locale.setDefault(locale);
+//        Configuration config = new Configuration();
+//        config.locale = locale;
+//        getBaseContext().getResources().updateConfiguration(config, 
+//        getBaseContext().getResources().getDisplayMetrics());
 	}
 	
 	public void createNavigationDrawer(){
