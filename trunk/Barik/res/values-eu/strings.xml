@@ -41,14 +41,13 @@
     <string name="title_activity_preference">PreferenceActivity</string>
     <string name="title_activity_settings">Hizkuntza</string>
     <string name="infoActualizacion">Aplikazio honetan aurkezten den informazioa barik txartelaren web gunean oinarritzen da. Web gunean ondorengo hau adierazten da: </string>
-    <string name="infoWebBarik">«Aurkeztutako datu eta errealen artean desberdintasunak gerta daitezke, datuen eguneraketa ez baita berehalakoa. Azken egunetako bidaia eta errekargak falta daitezke.»
+    <string name="infoWebBarik">«Aurkeztutako datu eta errealen artean desberdintasunak gerta daitezke, datuen eguneraketa ez baita berehalakoa. Azken egunetako bidaia eta errekargak falta daitezke.»</string>
     <string name="error_saldo">Ezin izan da saldoa irakurri</string>
     <string name="info_adic">Bestelako datuak</string>
     
     <string name="activa">Aktiboa</string>
     <string name="inactiva">Ez aktiboa</string>
     <string name="personalizada">Pertsonalizatua</string>
-    
-</string>
+   
 
 </resources>
