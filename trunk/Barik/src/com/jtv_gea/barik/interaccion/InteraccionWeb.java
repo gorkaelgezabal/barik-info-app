@@ -148,7 +148,6 @@ public class InteraccionWeb extends WebViewClient {
 	@Override
 	public void onLoadResource(WebView view, String url) {
 		if(entrar){
-			//if (url.equals("https://barikweb.cotrabi.com/favicon.ico")) {
 			if (url.contains(this.URL_PASO3+this.PARAM_1)) {
 				Log.i(this.getClass().getName(), "entrando datos");
 				view.loadUrl(JAVASCRIPT_DATOSUSUARIO);
