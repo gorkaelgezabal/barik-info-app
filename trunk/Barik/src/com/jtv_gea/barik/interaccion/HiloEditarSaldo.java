@@ -12,6 +12,9 @@ import com.jtv_gea.barik.modelo.BarikUser;
 public class HiloEditarSaldo implements Runnable{
 	private SaldoActivity saldoActivity;
 	private BarikUser usuario;
+	private static String ACTIVA = "Activa";
+	private static String PERSONALIZADA = "Personalizada";
+	
 	public HiloEditarSaldo(BarikUser usuario,  SaldoActivity saldoActivity){
 		this.usuario=usuario;
 		this.saldoActivity = saldoActivity;
@@ -27,11 +30,25 @@ public class HiloEditarSaldo implements Runnable{
         TextView fechaCaducidadText= (TextView) this.saldoActivity.findViewById(R.id.resultado_fecha_caducidad_barik);
         fechaCaducidadText.setText(usuario.getCaducidad());
         TextView tipoText= (TextView) this.saldoActivity.findViewById(R.id.resultado_tipo_barik);
-        tipoText.setText(usuario.getTipo());
+        
+        String strTipo = usuario.getTipo();
+        if(strTipo.equals(PERSONALIZADA)){
+        	tipoText.setText(this.saldoActivity.getResources().getString(R.string.personalizada));
+        }else{
+        	tipoText.setText(usuario.getTipo());
+        }
+
         TextView numClienteText= (TextView) this.saldoActivity.findViewById(R.id.resultado_numero_cliente_barik);
         numClienteText.setText(usuario.getnCliente());
         TextView numSituacionText= (TextView) this.saldoActivity.findViewById(R.id.resultado_situacion_barik);
-        numSituacionText.setText(usuario.getSituacion());
+        
+        String strSituacion = usuario.getSituacion();
+        if(strSituacion.equals(ACTIVA)){
+        	numSituacionText.setText(this.saldoActivity.getResources().getString(R.string.activa));
+        }else{
+        	numSituacionText.setText(this.saldoActivity.getResources().getString(R.string.inactiva));
+        }
+        
         TextView numTarjetaText= (TextView) this.saldoActivity.findViewById(R.id.resultado_numero_tarjeta_barik);
         numTarjetaText.setText(usuario.getnTarjeta());
         

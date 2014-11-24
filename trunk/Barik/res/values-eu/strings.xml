@@ -45,6 +45,9 @@
     <string name="error_saldo">Ezin izan da saldoa irakurri</string>
     <string name="info_adic">Bestelako datuak</string>
     
+    <string name="activa">Aktiboa</string>
+    <string name="inactiva">Ez aktiboa</string>
+    <string name="personalizada">Pertsonalizatua</string>
     
 </string>
 

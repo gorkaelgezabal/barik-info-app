@@ -1,6 +1,8 @@
 package com.jtv_gea.barik;
 
 
+import java.util.Locale;
+
 import com.jtv_gea.barik.interaccion.InteraccionWeb;
 import com.jtv_gea.barik.interaccion.JavaScriptInterface;
 import com.jtv_gea.barik.modelo.BarikUser;
@@ -27,6 +29,8 @@ import android.widget.TextView;
 
 public class SaldoActivity extends BaseActivity {
 
+	private static String ACTIVA = "Activa";
+	private static String PERSONALIZADA = "Personalizada";
 	private static Integer ACTIVITY_INDEX = 0;
 	private static String LOGIN_PAGE = "https://barikweb.cotrabi.com/sagb/faces/Login.jspx";
 	@Override
@@ -72,12 +76,27 @@ public class SaldoActivity extends BaseActivity {
         fechaActualizacionText.setText(user.getFechaUltimaActualizacionFormateada());
         TextView fechaCaducidadText= (TextView) this.findViewById(R.id.resultado_fecha_caducidad_barik);
         fechaCaducidadText.setText(user.getCaducidad());
+        
         TextView tipoText= (TextView) this.findViewById(R.id.resultado_tipo_barik);
-        tipoText.setText(user.getTipo());
+        
+        Locale current = this.getResources().getConfiguration().locale;
+        String strTipo = user.getTipo();
+        if(strTipo.equals(PERSONALIZADA)){
+        	String text = this.getResources().getString(R.string.personalizada);
+        	tipoText.setText(getResources().getString(R.string.personalizada));
+        }else{
+        	tipoText.setText(user.getTipo());
+        }
         TextView numClienteText= (TextView) this.findViewById(R.id.resultado_numero_cliente_barik);
         numClienteText.setText(user.getnCliente());
         TextView numSituacionText= (TextView) this.findViewById(R.id.resultado_situacion_barik);
-        numSituacionText.setText(user.getSituacion());
+        
+        String strSituacion = user.getSituacion();
+        if(strSituacion.equals(ACTIVA)){
+        	numSituacionText.setText(this.getResources().getString(R.string.activa));
+        }else{
+        	numSituacionText.setText(this.getResources().getString(R.string.inactiva));
+        }
         TextView numTarjetaText= (TextView) this.findViewById(R.id.resultado_numero_tarjeta_barik);
         numTarjetaText.setText(user.getnTarjeta());
         getActionBar().setTitle(R.string.title_activity_saldo);

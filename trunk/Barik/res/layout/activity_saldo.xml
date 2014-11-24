@@ -97,7 +97,7 @@
 		        android:layout_height="wrap_content"
 		        android:layout_marginTop="40dp"
 		        android:layout_below="@+id/resultado_fecha_actualizacion_barik"
-		        android:text="Informacion adicional"
+		        android:text="@string/info_adic"
 		        android:textAppearance="?android:attr/textAppearanceSmall" />
 		    
 		    <View
