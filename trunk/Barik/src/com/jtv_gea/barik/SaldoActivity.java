@@ -23,6 +23,7 @@ import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class SaldoActivity extends BaseActivity {
@@ -139,10 +140,9 @@ public class SaldoActivity extends BaseActivity {
 		super.onPause();
 		
 		//destruir WebView para evitar que se ejecute el javascript varias veces a la vez
-		WebView browser = (WebView)findViewById(R.id.browser);
-		ViewGroup webViewPlaceholder = (ViewGroup) getWindow().getDecorView().findViewById(android.R.id.content);
-		 webViewPlaceholder.removeView(browser);
-		browser.removeAllViews(); browser.destroy();
+		WebView browser = (WebView)findViewById(R.id.browser);		
+		RelativeLayout parent= (RelativeLayout) browser.getParent();
+		parent.removeView(browser);
 		browser.destroy();
 	}
 }
