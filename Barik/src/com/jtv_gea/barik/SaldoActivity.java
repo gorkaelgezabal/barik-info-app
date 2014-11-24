@@ -6,6 +6,7 @@ import com.jtv_gea.barik.interaccion.InteraccionWeb;
 import com.jtv_gea.barik.interaccion.JavaScriptInterface;
 import com.jtv_gea.barik.modelo.BarikUser;
 import com.jtv_gea.barik.modelo.Persistencia;
+
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.webkit.WebChromeClient;
@@ -135,7 +137,12 @@ public class SaldoActivity extends BaseActivity {
 	@Override
 	protected void onPause() {
 		super.onPause();
+		
+		//destruir WebView para evitar que se ejecute el javascript varias veces a la vez
 		WebView browser = (WebView)findViewById(R.id.browser);
+		ViewGroup webViewPlaceholder = (ViewGroup) getWindow().getDecorView().findViewById(android.R.id.content);
+		 webViewPlaceholder.removeView(browser);
+		browser.removeAllViews(); browser.destroy();
 		browser.destroy();
 	}
 }
