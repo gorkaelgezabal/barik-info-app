@@ -36,7 +36,6 @@ public class SaldoActivity extends BaseActivity {
 		
 		final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
 		progressBar.setId(R.id.progressBar);
-//		progressBar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 24));
 		progressBar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 34));
 
 		final FrameLayout decorView = (FrameLayout) getWindow().getDecorView();
@@ -86,7 +85,7 @@ public class SaldoActivity extends BaseActivity {
         numTarjetaText.setText(user.getnTarjeta());
         getActionBar().setTitle(R.string.title_activity_saldo);
         
-      //Se hace la llamada para actualizar el saldo
+        //Se hace la llamada para actualizar el saldo
       	this.getSaldo();
 	}
 

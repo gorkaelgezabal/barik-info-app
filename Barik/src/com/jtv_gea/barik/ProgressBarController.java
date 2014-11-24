@@ -25,8 +25,5 @@ public class ProgressBarController implements Runnable{
 		ProgressBar progressBar=(ProgressBar)this.saldoActivity.findViewById(R.id.progressBar);
 		progressBar.setProgress(this.progress);
 		
-		if(this.progress==MAXVALUE){
-			//cambiar el texto o hacer lo que sea
-		}
 	}
 }
