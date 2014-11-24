@@ -28,7 +28,7 @@ public class SettingsActivity extends BaseActivity {
 		mDrawerList.setItemChecked(ACTIVITY_INDEX, true);
 		
 		SharedPreferences prefs = this.getSharedPreferences("com.jtv_gea.barik", Context.MODE_PRIVATE);
-		String locale = prefs.getString("locale", "nope");
+		String locale = prefs.getString("locale", "es_ES");
 		RadioButton rb;
 		
 		if (locale.equals("es_ES")){
